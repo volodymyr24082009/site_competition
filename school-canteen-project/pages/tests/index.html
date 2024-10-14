@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестування</title>
+   <style>
+   /* Загальні стилі */
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(120deg, #ff9a8b 0%, #fad0c4 100%);
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+/* Заголовок і навігація */
+header {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Стилі навігації */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ff9a9e;
+    text-shadow: 0 0 8px #ff9a9e;
+}
+
+/* Стилі для секції тесту */
+#test-container {
+    display: none;
+    width: 70%;
+    max-width: 600px;
+    margin: 50px auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Стилі для питань */
+.question {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.question p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #f0f0f0;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Стилі для варіантів відповідей */
+.question label {
+    display: block;
+    margin: 10px 0;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #fff;
+}
+
+.question label:hover {
+    color: #ff9a9e;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Стилі для кнопки 'Next' */
+#next-button {
+    padding: 10px 20px;
+    background-color: #ff9a8b;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#next-button:hover {
+    background-color: #f08b7a;
+}
+
+/* Стилі для результатів */
+#result-container {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    animation: fadeInUp 1s ease-out;
+}
+
+#result-container p {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+/* Анімація fadeInUp */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивність для мобільних пристроїв */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    #test-container, #result-container {
+        width: 90%;
+    }
+
+    #next-button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}
+
+   </style>
+</head>
+<body>
+    <div id="test-container" style="display:none;">
+        <form id="test-form">
+            <div id="questions-container"></div>
+            <button type="button" onclick="submitTest()">Завершити тест</button>
+        </form>
+    </div>
+
+    <div id="start-container">
+        <button onclick="startTest()">Почати тест</button>
+    </div>
+
+    <div id="result-container" style="display:none;">
+        <p id="score"></p>
+        <p id="discount"></p>
+        <button onclick="location.reload()">Почати знову</button>
+    </div>
+
+    <script>
+        let questions = [];
+let correctAnswers = 0;
+
+// Завантаження питань з JSON
+async function loadTest() {
+    try {
+        const response = await fetch('questions.json');
+        if (!response.ok) {
+            throw new Error('Не вдалося завантажити питання');
+        }
+        const data = await response.json();
+        questions = data.questions;
+
+        const questionsContainer = document.getElementById('questions-container');
+        questionsContainer.innerHTML = ''; // Очищаємо контейнер перед додаванням нових питань
+
+        // Перевірка на завантаження питань
+        if (questions.length === 0) {
+            console.log("Немає питань у JSON!");
+        }
+
+        // Додавання питань на сторінку
+        questions.forEach((question, index) => {
+            const questionElement = document.createElement('div');
+            questionElement.classList.add('question');
+
+            const questionTitle = document.createElement('p');
+            questionTitle.textContent = `${index + 1}. ${question.питання}`;
+            questionElement.appendChild(questionTitle);
+
+            question.відповіді.forEach((answer, i) => {
+                const answerElement = document.createElement('label');
+                answerElement.innerHTML = ` 
+                    <input type="radio" name="question${index}" value="${i}">
+                    ${answer}
+                `;
+                questionElement.appendChild(answerElement);
+            });
+
+            questionsContainer.appendChild(questionElement);
+        });
+    } catch (error) {
+        console.error('Помилка при завантаженні питань:', error);
+    }
+}
+
+// Почати тест
+function startTest() {
+    document.querySelector("#start-container").style.display = 'none';
+    document.getElementById('test-container').style.display = 'block';
+    loadTest();
+}
+
+// Обробка результатів тесту
+function submitTest() {
+    correctAnswers = 0;
+    const form = document.getElementById('test-form');
+    const formData = new FormData(form);
+
+    formData.forEach((value, key) => {
+        const questionIndex = parseInt(key.replace('question', ''));
+        const correctAnswerIndex = questions[questionIndex].правильна_відповідь;
+
+        if (parseInt(value) === correctAnswerIndex) {
+            correctAnswers++;
+        }
+    });
+
+    // Підрахунок знижки
+    const discount = Math.min(50, correctAnswers * 5);
+
+    // Показати результати
+    document.getElementById('score').textContent = `Правильні відповіді: ${correctAnswers} з ${questions.length}`;
+    document.getElementById('discount').textContent = `Ваша знижка: ${discount}%`;
+
+    document.getElementById('test-container').style.display = 'none';
+    document.getElementById('result-container').style.display = 'block';
+}
+
+    </script>
+</body>
+</html>

@@ -3,56 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Меню - Шкільна їдальня</title>
-    <link rel="stylesheet" href="C:\Users\Admin\Documents\GitHub\site_competition\school-canteen-project\css\styles.css">
+    <title>Шкільна їдальня</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Загальні стилі */
+        body {
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Заголовок */
+        header {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.8s ease-out;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ff9a9e;
+            transform: scale(1.1);
+            text-shadow: 0 0 8px #ff9a9e;
+        }
+
+        /* Анімація для заголовка */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Блок для меню */
+        .menu-section {
+            text-align: center;
+            padding: 100px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin: 50px auto;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* Заголовок в секції меню */
+        .menu-section h1 {
+            font-size: 3em;
+            text-shadow: 0 0 10px #fff, 0 0 20px #66a6ff;
+        }
+
+        /* Перелік товарів */
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .menu-item {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .menu-item h2 {
+            margin: 10px 0;
+            font-size: 1.5em;
+            color: #fff;
+        }
+
+        .menu-item p {
+            font-size: 1.2em;
+            color: #f0f0f0;
+        }
+
+        /* Анімація для появи елементів */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Стилі для футера */
+        footer {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 1em;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Анімація для підсвітки кнопок */
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            background-color: #ff9a9e;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background-color: #ff6a6a;
+            transform: scale(1.1);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
 </head>
 <body>
     <header>
-        <div class="header-container">
-            <div class="logo">
-                <img src="../assets/images/logo.png" alt="Логотип шкільної їдальні">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Головна</a></li>
-                    <li><a href="menu.html">Меню</a></li>
-                    <li><a href="tests.html">Тести</a></li>
-                    <li><a href="games.html">Ігри</a></li>
-                    <li><a href="about.html">Про нас</a></li>
-                    <li><a href="contacts.html">Контакти</a></li>
-                </ul>
-            </nav>
-        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="menu.html">Меню</a></li>
+                <li><a href="tests.html">Тести</a></li>
+                <li><a href="games.html">Ігри</a></li>
+                <li><a href="about.html">Про нас</a></li>
+                <li><a href="contacts.html">Контакти</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
         <section class="menu-section">
-            <h1>Меню шкільної їдальні</h1>
-            <p>Виберіть страви, які ви хочете замовити!</p>
+            <h1>Меню</h1>
             <div class="menu-items">
-                <!-- Приклад страв -->
                 <div class="menu-item">
-                    <img src="../assets/images/dish1.jpg" alt="Страва 1">
-                    <h3>Піцца</h3>
-                    <p>Смачна піца з сиром, томатами та овочами</p>
-                    <button>Додати в кошик</button>
+                    <img src="https://via.placeholder.com/300" alt="Сендвіч">
+                    <h2>Сендвіч з куркою</h2>
+                    <p>Смачний сендвіч з куркою, салатом та соусом.</p>
+                    <button class="btn">Додати до кошика</button>
                 </div>
+
                 <div class="menu-item">
-                    <img src="../assets/images/dish2.jpg" alt="Страва 2">
-                    <h3>Борщ</h3>
-                    <p>Традиційний український борщ з пампушками</p>
-                    <button>Додати в кошик</button>
+                    <img src="https://via.placeholder.com/300" alt="Сендвіч">
+                    <h2>Сендвіч з тунцем</h2>
+                    <p>Свіжий сендвіч з тунцем, овочами та майонезом.</p>
+                    <button class="btn">Додати до кошика</button>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://via.placeholder.com/300" alt="Сендвіч">
+                    <h2>Вегетаріанський сендвіч</h2>
+                    <p>Легкий сендвіч з овочами та крем-сиром.</p>
+                    <button class="btn">Додати до кошика</button>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="footer-info">
-            <p>&copy; 2024 Шкільна їдальня. Всі права захищені.</p>
-        </div>
+        <p>&copy; 2024 Шкільна їдальня. Всі права захищені.</p>
     </footer>
-
-    <script src="../js/script.js"></script>
 </body>
 </html>
