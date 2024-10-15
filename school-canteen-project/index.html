@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт їдальні</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1d2b64, #f8cdda);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Велика стилізована кнопка */
+        #canteen-button {
+            display: block;
+            width: 300px;
+            height: 80px;
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            border: none;
+            border-radius: 40px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
+            line-height: 80px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        #canteen-button:hover {
+            background: linear-gradient(135deg, #0083b0, #00b4db);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Велика стилізована кнопка для переходу на сайт їдальні -->
+    <button id="canteen-button" onclick="goToCanteen()">На сайт їдальні</button>
+
+    <script>
+        // Функція для перенаправлення на index.html з урахуванням шляху
+        function goToCanteen() {
+            window.location.href = 'C:/Users/24g_chvv/Documents/GitHub/site_competition/school-canteen-project/pages/index.html'; // Абсолютний шлях до файлу
+        }
+    </script>
+
+</body>
+</html>
