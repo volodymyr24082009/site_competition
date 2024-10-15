@@ -1,321 +1,254 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Інноваційний Платформер</title>
-    <style>
-        body {
-            background: linear-gradient(135deg, #1d2b64, #f8cdda);
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: white;
-            overflow: hidden;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шкільна їдальня - Гра</title>
+  <style>
+    /* Загальні стилі */
+    body {
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: white;
+    }
 
-        canvas {
-            display: block;
-            margin: 0 auto;
-            background-color: #222;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-        }
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      color: #e74c3c;
+    }
 
-        /* Кнопка старту */
-        #start-button {
-            display: block;
-            width: 200px;
-            height: 50px;
-            background: linear-gradient(135deg, #ff6f61, #ff9f8c);
-            border: none;
-            border-radius: 25px;
-            color: white;
-            font-size: 18px;
-            margin: 100px auto;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+    /* Кнопки */
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #2980b9, #8e44ad);
+      color: white;
+      cursor: pointer;
+      transition: transform 0.3s, background-color 0.3s;
+    }
 
-        #start-button:hover {
-            background: linear-gradient(135deg, #ff9f8c, #ff6f61);
-        }
+    button:hover {
+      transform: scale(1.1);
+      background-color: #f39c12;
+    }
 
-        /* Стилі для футера */
-        footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: linear-gradient(135deg, #1d2b64, #f8cdda);
-            text-align: center;
-            padding: 20px;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
-            font-size: 14px;
-            color: white;
-        }
+    /* Гравець і перешкоди */
+    canvas {
+      display: block;
+      margin: 0 auto;
+      background: #ecf0f1;
+      border: 2px solid #34495e;
+    }
 
-        footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            transition: 0.3s;
-        }
+    /* Футер */
+    footer {
+      background: #34495e;
+      padding: 20px;
+      text-align: center;
+    }
 
-        footer a:hover {
-            color: #ff6f61;
-        }
+    footer a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
 
-        /* Секція рівнів */
-        .level-select, .form-container {
-            text-align: center;
-            margin-top: 30px;
-            display: none;
-        }
+    footer a:hover {
+      color: #f39c12;
+    }
 
-        .level-select button {
-            margin: 10px;
-            background: linear-gradient(135deg, #ff6f61, #ff9f8c);
-            border: none;
-            border-radius: 25px;
-            padding: 15px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .level-select button:hover {
-            background: linear-gradient(135deg, #ff9f8c, #ff6f61);
-        }
-
-        .form-container input {
-            width: 200px;
-            padding: 10px;
-            margin: 10px;
-            border-radius: 5px;
-            border: 1px solid #ff6f61;
-            background-color: rgba(255, 255, 255, 0.2);
-            color: white;
-            font-size: 16px;
-        }
-
-        .form-container button {
-            background: linear-gradient(135deg, #ff6f61, #ff9f8c);
-            border: none;
-            border-radius: 25px;
-            padding: 10px 20px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .form-container button:hover {
-            background: linear-gradient(135deg, #ff9f8c, #ff6f61);
-        }
-
-        .star-award {
-            color: #ff9f8c;
-            font-size: 24px;
-            text-align: center;
-            display: none;
-            margin-top: 20px;
-        }
-    </style>
+    /* Анімації */
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    .bouncy {
+      animation: bounce 1s infinite;
+    }
+  </style>
 </head>
 <body>
 
-    <h1 style="text-align: center; color: #fff;">Інноваційний Платформер</h1>
+  <header>
+    <h1>Шкільна їдальня - Гра</h1>
+  </header>
 
-    <!-- Кнопка для початку гри -->
-    <button id="start-button">Почати гру</button>
-
-    <!-- Форма для введення імені -->
-    <div class="form-container" id="form-container">
-        <input type="text" id="playerName" placeholder="Введіть ім'я гравця" />
-        <button onclick="submitName()">Підтвердити</button>
+  <main>
+    <div style="text-align:center;">
+      <button id="start-button" class="bouncy">Почати гру</button>
+      <div>
+        <button class="level-button">Легкий рівень</button>
+        <button class="level-button">Середній рівень</button>
+        <button class="level-button">Важкий рівень</button>
+      </div>
+      <canvas id="gameCanvas" width="800" height="600"></canvas>
     </div>
+  </main>
 
-    <!-- Вибір рівня складності -->
-    <div class="level-select" id="level-select">
-        <button onclick="startLevel('easy')">Легкий рівень</button>
-        <button onclick="startLevel('medium')">Середній рівень</button>
-        <button onclick="startLevel('hard')">Важкий рівень</button>
-    </div>
+  <footer>
+    <p>Шкільна їдальня © 2024</p>
+    <a href="#">Домашня сторінка</a> | <a href="#">Політика конфіденційності</a>
+  </footer>
 
-    <!-- Canvas для гри -->
-    <canvas id="gameCanvas"></canvas>
+  <script>
+    // Ініціалізація Canvas та контексту
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
 
-    <!-- Зірочки після перемоги -->
-    <div class="star-award" id="star-award">Вітаємо! Ви отримали 5 зірочок!</div>
+    // Гравець
+    const player = {
+      x: 50,
+      y: 540,
+      width: 50,
+      height: 50,
+      speed: 5,
+      jumping: false,
+      jumpHeight: 15,
+      jumpSpeed: 5,
+      gravity: 0.5,
+      moveLeft: false,
+      moveRight: false
+    };
 
-    <footer>
-        <p>&copy; 2024 Платформер. Все права захищено.</p>
-        <a href="#">Про нас</a> | <a href="#">Контакти</a> | <a href="#">Політика конфіденційності</a>
-    </footer>
+    // Перешкоди
+    let obstacles = [];
+    let level = "easy"; // за замовчуванням легкий рівень
+    let stars = 0; // змінна для зірочок
 
-    <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-        const startButton = document.getElementById('start-button');
-        const levelSelect = document.getElementById('level-select');
-        const formContainer = document.getElementById('form-container');
-        const playerNameInput = document.getElementById('playerName');
-        const starAward = document.getElementById('star-award');
+    // Слухач подій для клавіатури
+    let keys = {
+      left: false,
+      right: false,
+      up: false
+    };
 
-        // Розміри canvas
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+    // Оновлення стану гри
+    function updateGame() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawPlayer();
+      movePlayer();
+      createObstacles();
+      drawObstacles();
+      checkCollisions();
+      checkEndGame();
+      requestAnimationFrame(updateGame);
+    }
 
-        // Гравець
-        const player = {
-            x: 50,
-            y: canvas.height - 150,
-            width: 50,
-            height: 50,
-            speed: 5,
-            dx: 0,
-            dy: 0,
-            gravity: 0.8,
-            jumpPower: 15,
-            jumping: false,
-            grounded: false
-        };
+    // Малюємо гравця
+    function drawPlayer() {
+      ctx.fillStyle = '#e74c3c';
+      ctx.fillRect(player.x, player.y, player.width, player.height);
+    }
 
-        // Перешкоди
-        const obstacles = [];
-        let levelDifficulty = 'easy';
-        let playerName = '';
+    // Рух гравця
+    function movePlayer() {
+      if (keys.left) player.x -= player.speed;
+      if (keys.right) player.x += player.speed;
 
-        // Старт гри
-        startButton.addEventListener('click', () => {
-            startButton.style.display = 'none';
-            formContainer.style.display = 'block';
-        });
-
-        // Підтвердити ім'я
-        function submitName() {
-            playerName = playerNameInput.value;
-            formContainer.style.display = 'none';
-            levelSelect.style.display = 'block';
+      // Стрибок
+      if (player.jumping) {
+        player.y -= player.jumpSpeed;
+        player.jumpSpeed -= player.gravity;
+        if (player.y >= 540) {
+          player.y = 540;
+          player.jumping = false;
+          player.jumpSpeed = 15;
         }
+      }
+    }
 
-        // Старт рівня
-        function startLevel(level) {
-            levelDifficulty = level;
-            levelSelect.style.display = 'none';
-            resetGame();
-            gameLoop();
+    // Обробка перешкод
+    function createObstacles() {
+      if (Math.random() < 0.02) {
+        let obstacleHeight = Math.random() * (50) + 20;
+        let obstacleWidth = Math.random() * (40) + 20;
+        let obstacleX = canvas.width;
+        let obstacleY = 540 - obstacleHeight;
+
+        obstacles.push({ x: obstacleX, y: obstacleY, width: obstacleWidth, height: obstacleHeight });
+      }
+    }
+
+    function drawObstacles() {
+      ctx.fillStyle = '#34495e';
+      obstacles.forEach(function(obstacle) {
+        obstacle.x -= 3;
+        ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+      });
+    }
+
+    function checkCollisions() {
+      obstacles.forEach(function(obstacle) {
+        if (player.x < obstacle.x + obstacle.width &&
+            player.x + player.width > obstacle.x &&
+            player.y < obstacle.y + obstacle.height &&
+            player.y + player.height > obstacle.y) {
+          alert("Гра закінчена! Ви не пройшли гру.");
+          resetGame();
         }
+      });
+    }
 
-        // Рестарт гри
-        function resetGame() {
-            player.x = 50;
-            player.y = canvas.height - 150;
-            player.dx = 0;
-            player.dy = 0;
-            obstacles.length = 0;
-            generateObstacles(levelDifficulty);
-        }
+    // Перевірка кінцівки гри
+    function checkEndGame() {
+      if (player.x >= canvas.width - player.width) {
+        stars++;
+        alert("Вітаємо! Ви пройшли гру та отримали зірочку!");
+        resetGame();
+      }
+    }
 
-        // Генерація перешкод
-        function generateObstacles(level) {
-            const numObstacles = level === 'easy' ? 3 : (level === 'medium' ? 5 : 7);
-            for (let i = 0; i < numObstacles; i++) {
-                obstacles.push({
-                    x: Math.random() * canvas.width,
-                    y: canvas.height - 100 - Math.random() * 100,
-                    width: 100 + Math.random() * 50,
-                    height: 20 + Math.random() * 30,
-                    speed: Math.random() * 3 + 1
-                });
-            }
-        }
+    // Слухач подій для клавіатури
+    window.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowLeft') keys.left = true;
+      if (event.key === 'ArrowRight') keys.right = true;
+      if (event.key === ' ') player.jumping = true;
+    });
 
-        // Основний цикл гри
-        function gameLoop() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            updatePlayer();
-            handleObstacles();
-            detectCollisions();
-            requestAnimationFrame(gameLoop);
-        }
+    window.addEventListener('keyup', function(event) {
+      if (event.key === 'ArrowLeft') keys.left = false;
+      if (event.key === 'ArrowRight') keys.right = false;
+    });
 
-        // Оновлення гравця
-        function updatePlayer() {
-            player.y += player.dy;
-            player.x += player.dx;
+    // Кнопка старту гри
+    document.getElementById('start-button').addEventListener('click', function() {
+      startGame();
+    });
 
-            if (player.y + player.height > canvas.height) {
-                player.y = canvas.height - player.height;
-                player.dy = 0;
-                player.jumping = false;
-                player.grounded = true;
-            } else {
-                player.dy += player.gravity;
-                player.grounded = false;
-            }
+    // Запуск гри
+    function startGame() {
+      document.getElementById('start-button').style.display = 'none';
+      updateGame();
+    }
 
-            ctx.fillStyle = 'green';
-            ctx.fillRect(player.x, player.y, player.width, player.height);
-        }
+    // Кнопки вибору рівня
+    document.querySelectorAll('.level-button').forEach(function(button) {
+      button.addEventListener('click', function() {
+        level = button.textContent.toLowerCase();
+        obstacles = [];
+        startGame();
+      });
+    });
 
-        // Рух гравця
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft' || e.key === 'a') {
-                player.dx = -player.speed;
-            }
-            if (e.key === 'ArrowRight' || e.key === 'd') {
-                player.dx = player.speed;
-            }
-            if ((e.key === ' ' || e.key === 'ArrowUp' || e.key === 'w') && !player.jumping) {
-                player.dy = -player.jumpPower;
-                player.jumping = true;
-            }
-        });
-
-        document.addEventListener('keyup', (e) => {
-            if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'ArrowRight' || e.key === 'd') {
-                player.dx = 0;
-            }
-        });
-
-        // Обробка перешкод
-        function handleObstacles() {
-            obstacles.forEach(obstacle => {
-                obstacle.x -= obstacle.speed;
-                if (obstacle.x + obstacle.width < 0) {
-                    obstacle.x = canvas.width;
-                }
-
-                ctx.fillStyle = 'red';
-                ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
-            });
-        }
-
-        // Виявлення зіткнень
-        function detectCollisions() {
-            obstacles.forEach(obstacle => {
-                if (player.x < obstacle.x + obstacle.width &&
-                    player.x + player.width > obstacle.x &&
-                    player.y < obstacle.y + obstacle.height &&
-                    player.y + player.height > obstacle.y) {
-                    // Зіткнення
-                    alert('Гра завершена! Ви зіткнулись з перешкодою!');
-                    resetGame();
-                }
-            });
-        }
-
-        // Виведення зірочок після перемоги
-        function winGame() {
-            starAward.style.display = 'block';
-            setTimeout(() => {
-                starAward.style.display = 'none';
-                resetGame();
-            }, 3000);
-        }
-    </script>
+    // Скидання гри
+    function resetGame() {
+      player.x = 50;
+      player.y = 540;
+      obstacles = [];
+      alert('Гра перезапущена!');
+    }
+  </script>
 
 </body>
 </html>

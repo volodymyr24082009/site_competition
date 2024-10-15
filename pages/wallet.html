@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ваш гаманець</title>
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .content {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .wallet-box {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .wallet-box p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Стилі для хедера */
+header {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Стилі для навігаційного меню */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #00ffe7;
+    text-shadow: 0 0 12px #00ffe7;
+    transform: scale(1.1);
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ваш гаманець</h1>
+    </header>
+    <header>
+        <nav>
+          <ul>
+            <li><a href="./index.html">Головна</a></li>
+            <li><a href=".././menu.html">Меню</a></li>
+            <li><a href="../tests/index.html">Тести</a></li>
+            <li><a href=".././games.html">Ігри</a></li>
+            <li><a href="./contacts.html">Контакти</a></li>
+          </ul>
+        </nav>
+      </header>
+    <div class="content">
+        <div class="wallet-box">
+            <p>Знижка: <span id="discount-message"></span></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Шкільна їдальня</p>
+    </footer>
+
+    <script>
+        // Отримуємо знижку з localStorage
+        const discountMessage = localStorage.getItem('discount') || 'Знижка не отримана.';
+        document.getElementById('discount-message').textContent = discountMessage;
+    </script>
+</body>
+</html>

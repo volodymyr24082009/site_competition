@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакти - Шкільна їдальня</title>
+    <title>Шкільна їдальня</title>
     <link rel="stylesheet" href="C:\Users\Admin\Documents\GitHub\site_competition\school-canteen-project\css\styles.css">
     <style>
         /* Оновлені стилі для сторінки Контакти */
@@ -15,6 +15,9 @@
             color: white;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
@@ -85,23 +88,24 @@
             background: rgba(255, 255, 255, 0.2);
             color: white;
             font-size: 1em;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
 
         .form-group input:focus, .form-group textarea:focus {
             background: rgba(255, 255, 255, 0.4);
             outline: none;
+            transform: scale(1.05);
         }
 
         button[type="submit"] {
-            padding: 10px 20px;
+            padding: 12px 24px;
             background: #ff9a9e;
             border: none;
             border-radius: 5px;
             color: white;
             font-size: 1.2em;
             cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
 
         button[type="submit"]:hover {
@@ -116,6 +120,9 @@
             text-align: center;
             color: white;
             font-size: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
 
         footer p {
@@ -138,14 +145,12 @@
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href="index.html">Головна</a></li>
-                <li><a href="menu.html">Меню</a></li>
-                <li><a href="tests.html">Тести</a></li>
-                <li><a href="games.html">Ігри</a></li>
-                <li><a href="about.html">Про нас</a></li>
-                <li><a href="contacts.html">Контакти</a></li>
-            </ul>
+          <ul>
+            <li><a href="./index.html">Головна</a></li>
+            <li><a href=".././menu.html">Меню</a></li>
+            <li><a href="../tests/index.html">Тести</a></li>
+            <li><a href=".././games.html">Ігри</a></li>
+          </ul>
         </nav>
     </header>
 

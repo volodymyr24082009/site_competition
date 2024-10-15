@@ -22,7 +22,7 @@
       /* Заголовок */
       header {
         background: rgba(0, 0, 0, 0.6);
-        padding: 10px 0;
+        padding: 20px 0;
         text-align: center;
         position: sticky;
         top: 0;
@@ -31,12 +31,13 @@
         animation: slideIn 0.8s ease-out;
       }
 
+      /* Стилі для навігаційного меню */
       nav ul {
+        display: flex;
+        justify-content: center;
         list-style: none;
         padding: 0;
         margin: 0;
-        display: flex;
-        justify-content: center;
       }
 
       nav ul li {
@@ -48,6 +49,8 @@
         text-decoration: none;
         font-weight: bold;
         font-size: 18px;
+        padding: 10px 20px;
+        border-radius: 5px;
         transition: color 0.3s ease, transform 0.3s ease;
       }
 
@@ -70,7 +73,7 @@
       /* Блок для меню */
       .menu-section {
         text-align: center;
-        padding: 100px 20px;
+        padding: 50px 20px;
         background: rgba(255, 255, 255, 0.1);
         border-radius: 15px;
         margin: 50px auto;
@@ -83,6 +86,7 @@
       .menu-section h1 {
         font-size: 3em;
         text-shadow: 0 0 10px #fff, 0 0 20px #66a6ff;
+        margin-bottom: 40px;
       }
 
       /* Перелік товарів */
@@ -99,6 +103,7 @@
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s ease;
+        text-align: center;
       }
 
       .menu-item:hover {
@@ -108,7 +113,8 @@
 
       .menu-item img {
         width: 100%;
-        height: auto;
+        height: 200px;
+        object-fit: cover;
         border-radius: 10px;
       }
 
@@ -143,14 +149,15 @@
         color: white;
         font-size: 1em;
         position: relative;
-        animation: fadeInUp 1s ease-out;
+        bottom: 0;
+        width: 100%;
       }
 
       footer p {
         margin: 0;
       }
 
-      /* Анімація для підсвітки кнопок */
+      /* Стилізація кнопок */
       .btn {
         padding: 12px 24px;
         border: none;
@@ -169,14 +176,20 @@
         transform: scale(1.1);
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
       }
-      .menu-item img {
-        width: 100%;
-        height: 200px; /* Фіксована висота для всіх зображень */
-        object-fit: cover; /* Забезпечує рівномірне відображення без спотворення */
-        border-radius: 10px;
+
+      /* Адаптивність для мобільних пристроїв */
+      @media (max-width: 768px) {
+        nav ul {
+          flex-direction: column;
+        }
+
+        .menu-items {
+          grid-template-columns: 1fr;
+        }
       }
-      html,
-      body {
+
+      /* Загальний стиль для сторінки */
+      html, body {
         height: 100%;
         margin: 0;
         padding: 0;
@@ -185,18 +198,7 @@
       }
 
       .wrapper {
-        flex: 1; /* Займає весь простір між header і footer */
-      }
-
-      footer {
-        background: rgba(0, 0, 0, 0.6);
-        padding: 20px;
-        text-align: center;
-        color: white;
-        font-size: 1em;
-        position: relative;
-        bottom: 0;
-        width: 100%;
+        flex: 1;
       }
     </style>
   </head>
@@ -204,41 +206,18 @@
     <header>
       <nav>
         <ul>
-          <li><a href="index.html">Головна</a></li>
-          <li><a href="menu.html">Меню</a></li>
-          <li><a href="tests.html">Тести</a></li>
-          <li><a href="games.html">Ігри</a></li>
-          <li><a href="about.html">Про нас</a></li>
-          <li><a href="contacts.html">Контакти</a></li>
+          <li><a href="#">Головна</a></li>
+          <li><a href="#">Меню</a></li>
+          <li><a href="#">Тести</a></li>
+          <li><a href="#">Контакти</a></li>
         </ul>
       </nav>
     </header>
 
-    <main>
-      <section class="menu-section">
-        <h1>Меню</h1>
+    <div class="wrapper">
+      <div class="menu-section">
+        <h1>Меню шкільної їдальні</h1>
         <div class="menu-items">
-          <!-- Гарячі страви -->
-          <div class="menu-item">
-            <img
-              src="https://lh3.googleusercontent.com/-F7-f2RyixFJ_0-MIGehlz7lp08CkWuy7Y64qDx8zcSrAyHA_uWVnJx1XOVAHg_qoFD7fW34aWScKlOz7tlHx8LeBxDoB64vaZ6LCKKMAPPnr8-QTpPpQVVK-xGPWFZomSVkVZXW"
-              alt="Піца Маргарита"
-            />
-            <h2>Піца Маргарита</h2>
-            <p>Традиційна італійська піца з томатами і сиром.</p>
-            <button class="btn">Додати до кошика</button>
-          </div>
-
-          <div class="menu-item">
-            <img
-              src="https://smachno.ua/wp-content/uploads/2018/05/14/Depositphotos_10957284_m-2015.jpg"
-              alt="Чізбургер"
-            />
-            <h2>Чізбургер</h2>
-            <p>Соковитий бургер з сиром чеддер.</p>
-            <button class="btn">Додати до кошика</button>
-          </div>
-
           <div class="menu-item">
             <img
               src="https://cipollino.ua/content/uploads/images/pytstsa-pepperony-sostav-retsept-y-kaloryinost-1-cipollino.jpg"
@@ -271,59 +250,19 @@
 
           <div class="menu-item">
             <img
-              src="https://i.ytimg.com/vi/XuCUbYd7aLk/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAmTEwjaEWGBC7W5iKBQQR-ULAsuA"
-              alt="Булочка з корицею"
+              src="https://i.ytimg.com/vi/XuCUbYd7aL4/maxresdefault.jpg"
+              alt="Сендвіч з тунцем"
             />
-            <h2>Булочка з корицею</h2>
-            <p>Ніжна солодка булочка з корицею.</p>
-            <button class="btn">Додати до кошика</button>
-          </div>
-
-          <div class="menu-item">
-            <img
-              src="https://news24.in.ua/wp-content/uploads/recipe_65f06cbd-5a38-4240-be82-0f56a2408850_w450.jpg"
-              alt="Булочка з сиром"
-            />
-            <h2>Булочка з сиром</h2>
-            <p>Свіжа булочка з сирною начинкою.</p>
-            <button class="btn">Додати до кошика</button>
-          </div>
-
-          <div class="menu-item">
-            <img
-              src="https://shuba.life/static/content/thumbs/414x276/1/08/melwnc---c3x2x50px50p-up--c528afcebb0efaf5b0a82ef4aa76c081.jpg"
-              alt="Піца 4 сири"
-            />
-            <h2>Піца 4 сири</h2>
-            <p>Найсмачніша піца з чотирма видами сиру.</p>
-            <button class="btn">Додати до кошика</button>
-          </div>
-
-          <div class="menu-item">
-            <img
-              src="https://static.1000.menu/img/content-v2/02/1d/53551/xot-dog-v-domashnix-usloviyax-v-bulochke-s-sosiskoi_1616347265_21_max.jpg"
-              alt="Хот-дог"
-            />
-            <h2>Хот-дог</h2>
-            <p>Хот-дог з соковитою сосискою та овочами.</p>
-            <button class="btn">Додати до кошика</button>
-          </div>
-
-          <div class="menu-item">
-            <img
-              src="https://focus.ua/static/storage/thumbs/920x465/a/17/780bab73-db15cb4cdcd77ecd9d72d1def49a017a.jpg?v=3788_1"
-              alt="Булочка з джемом"
-            />
-            <h2>Булочка з джемом</h2>
-            <p>Солодка булочка з фруктовим джемом.</p>
+            <h2>Сендвіч з тунцем</h2>
+            <p>Класичний сендвіч з тунцем та овочами.</p>
             <button class="btn">Додати до кошика</button>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </div>
 
     <footer>
-      <p>© 2024 Шкільна їдальня. Всі права захищені.</p>
+      <p>&copy; 2024 Шкільна їдальня. Усі права захищені.</p>
     </footer>
   </body>
 </html>
