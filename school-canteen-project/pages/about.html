@@ -2,29 +2,32 @@
 <html lang="uk">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Про нас - Шкільна їдальня</title>
-    <link rel="stylesheet" href="C:\Users\Admin\Documents\GitHub\site_competition\school-canteen-project\css\styles.css">
+    <link rel="stylesheet" href="C:\Users\Admin\Documents\GitHub\site_competition\school-canteen-project\css\styles.css" />
     <style>
         /* Оновлені стилі для сторінки "Про нас" */
-
         body {
-            font-family: 'Orbitron', sans-serif;
+            font-family: "Orbitron", sans-serif;
             background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
             margin: 0;
             padding: 0;
             color: white;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
         }
 
         header {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 10px 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.8s ease-out;
         }
 
         nav ul {
@@ -43,17 +46,30 @@
             color: white;
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease;
+            font-size: 18px;
         }
 
         nav ul li a:hover {
             color: #ff9a9e;
+            transform: scale(1.1);
             text-shadow: 0 0 8px #ff9a9e;
+        }
+
+        /* Анімація для заголовка */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-100%);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
         }
 
         .about-section {
             text-align: center;
-            padding: 100px 20px;
+            padding: 80px 20px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             margin: 50px auto;
@@ -63,43 +79,70 @@
         }
 
         .about-section h1 {
-            font-size: 3em;
+            font-size: 3.5em;
             text-shadow: 0 0 10px #fff, 0 0 20px #66a6ff;
+            margin-bottom: 20px;
         }
 
         .about-section p {
-            font-size: 1.5em;
+            font-size: 1.4em;
             line-height: 1.6;
             color: #f0f0f0;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
 
         footer {
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.7);
             padding: 20px;
             text-align: center;
             color: white;
             font-size: 1em;
+            margin-top: auto;
+            position: relative;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
         }
 
         footer p {
             margin: 0;
         }
 
+        /* Анімація для появи елементів */
         @keyframes fadeInUp {
             0% {
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
+        /* Стиль для кнопки повернення на головну */
+        .btn-home {
+            padding: 12px 24px;
+            background-color: #66a6ff;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-home:hover {
+            background-color: #ff6a6a;
+            transform: scale(1.05);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 
 <body>
+
     <header>
         <nav>
             <ul>
@@ -116,7 +159,11 @@
     <main>
         <section class="about-section">
             <h1>Про нашу шкільну їдальню</h1>
-            <p>Ми пропонуємо свіжі та смачні страви для учнів нашої школи. Наша мета - забезпечити кожного смачними та корисними стравами!</p>
+            <p>
+                Ми пропонуємо свіжі та смачні страви для учнів нашої школи. Наша мета
+                - забезпечити кожного смачними та корисними стравами!
+            </p>
+            <a href="index.html" class="btn-home">Повернутися на головну</a>
         </section>
     </main>
 
@@ -125,6 +172,7 @@
             <p>&copy; 2024 Шкільна їдальня. Всі права захищені.</p>
         </div>
     </footer>
+
 </body>
 
 </html>

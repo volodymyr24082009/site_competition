@@ -1,356 +1,321 @@
 <!DOCTYPE html>
 <html lang="uk">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ігри для заробляння зірочок</title>
+    <title>Інноваційний Платформер</title>
     <style>
-        * {
+        body {
+            background: linear-gradient(135deg, #1d2b64, #f8cdda);
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to bottom right, #1a1a2e, #16213e, #0f3460);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: white;
-            line-height: 1.6;
+            overflow: hidden;
         }
 
-        .container {
-            margin: 50px auto;
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background-color: #222;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Кнопка старту */
+        #start-button {
+            display: block;
+            width: 200px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff6f61, #ff9f8c);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-size: 18px;
+            margin: 100px auto;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #start-button:hover {
+            background: linear-gradient(135deg, #ff9f8c, #ff6f61);
+        }
+
+        /* Стилі для футера */
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #1d2b64, #f8cdda);
             text-align: center;
             padding: 20px;
-            max-width: 800px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+            font-size: 14px;
+            color: white;
         }
 
-        .game-container {
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-
-        button {
-            background-color: #ff5733;
-            padding: 10px 20px;
+        footer a {
             color: white;
             text-decoration: none;
-            border-radius: 10px;
-            font-size: 1.2em;
-            margin-top: 15px;
-            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            margin: 0 10px;
+            transition: 0.3s;
         }
 
-        button:hover {
-            background-color: #ffcc00;
-            transform: scale(1.05);
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        footer a:hover {
+            color: #ff6f61;
         }
 
-        .game-description {
+        /* Секція рівнів */
+        .level-select, .form-container {
+            text-align: center;
+            margin-top: 30px;
             display: none;
         }
 
-        input[type="text"] {
-            padding: 10px;
-            margin-top: 10px;
-            font-size: 1.2em;
-            border-radius: 5px;
-            border: 1px solid #fff;
-            background: rgba(255, 255, 255, 0.2);
+        .level-select button {
+            margin: 10px;
+            background: linear-gradient(135deg, #ff6f61, #ff9f8c);
+            border: none;
+            border-radius: 25px;
+            padding: 15px;
             color: white;
-            transition: background-color 0.3s;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        input[type="text"]:focus {
-            background-color: rgba(255, 255, 255, 0.5);
-            outline: none;
+        .level-select button:hover {
+            background: linear-gradient(135deg, #ff9f8c, #ff6f61);
         }
 
-        .timer {
-            font-size: 1.5em;
-            margin-top: 10px;
+        .form-container input {
+            width: 200px;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ff6f61;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 16px;
         }
 
-        .continue-button {
+        .form-container button {
+            background: linear-gradient(135deg, #ff6f61, #ff9f8c);
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .form-container button:hover {
+            background: linear-gradient(135deg, #ff9f8c, #ff6f61);
+        }
+
+        .star-award {
+            color: #ff9f8c;
+            font-size: 24px;
+            text-align: center;
             display: none;
-        }
-
-        p#math-limit, p#memory-limit, p#logic-limit, p#word-limit {
-            color: red;
-            font-weight: bold;
+            margin-top: 20px;
         }
     </style>
 </head>
-
 <body>
-    <header>
-        <h1>Ігри для заробляння зірочок</h1>
-    </header>
 
-    <div class="container">
-        <!-- Гра 1: Математичні обчислення -->
-        <div class="game-container" id="math-game-container">
-            <h2>Математичні обчислення</h2>
-            <button id="start-math-game" onclick="startMathGame()">Почати гру</button>
-            <div class="game-description" id="math-description">
-                <h3>Детальніше про гру</h3>
-                <p>Вирішуйте математичні задачі та заробляйте зірочки!</p>
-            </div>
-            <div id="math-game" class="game" style="display:none;">
-                <p id="math-question">Тут буде питання</p>
-                <input type="text" id="math-answer" placeholder="Ваша відповідь">
-                <button onclick="checkMathAnswer()">Відправити</button>
-                <p id="math-result"></p>
-            </div>
-            <div id="math-timer" class="timer">Час: 00:30</div>
-            <p id="math-limit" style="display:none;">Ви вже відповіли на 10 питань сьогодні. Поверніться завтра.</p>
-            <button class="continue-button" onclick="continueGame('math')">Продовжити гру</button>
-        </div>
+    <h1 style="text-align: center; color: #fff;">Інноваційний Платформер</h1>
 
-        <!-- Гра 2: Гра на пам'ять -->
-        <div class="game-container" id="memory-game-container">
-            <h2>Гра на пам'ять</h2>
-            <button id="start-memory-game" onclick="startMemoryGame()">Почати гру</button>
-            <div class="game-description" id="memory-description">
-                <h3>Детальніше про гру</h3>
-                <p>Запам'ятовуйте цифри та перевіряйте свою пам'ять.</p>
-            </div>
-            <div id="memory-game" style="display:none;">
-                <p id="memory-sequence">0123</p> <!-- Це буде ваша послідовність -->
-                <input type="text" id="memory-answer" placeholder="Ваша відповідь">
-                <button onclick="checkMemoryAnswer()">Відправити</button>
-                <p id="memory-result"></p>
-            </div>
-            <div id="memory-timer" class="timer">Час: 00:30</div>
-            <p id="memory-limit" style="display:none;">Ви вже відповіли на 3 питання сьогодні. Поверніться завтра.</p>
-            <button class="continue-button" onclick="continueGame('memory')">Продовжити гру</button>
-        </div>
+    <!-- Кнопка для початку гри -->
+    <button id="start-button">Почати гру</button>
 
-        <!-- Гра 3: Логічні задачі -->
-        <div class="game-container" id="logic-game-container">
-            <h2>Логічні задачі</h2>
-            <button id="start-logic-game" onclick="startLogicGame()">Почати гру</button>
-            <div class="game-description" id="logic-description">
-                <h3>Детальніше про гру</h3>
-                <p>Виберіть правильну відповідь із трьох варіантів.</p>
-            </div>
-            <div id="logic-game" style="display:none;">
-                <p id="logic-question">Яка правильна відповідь?</p>
-                <button id="optionA" onclick="checkLogicAnswer('A')">A</button>
-                <button id="optionB" onclick="checkLogicAnswer('B')">B</button>
-                <button id="optionC" onclick="checkLogicAnswer('C')">C</button>
-            </div>
-            <div id="logic-timer" class="timer">Час: 00:30</div>
-            <p id="logic-limit" style="display:none;">Ви вже відповіли на 2 питання сьогодні. Поверніться завтра.</p>
-            <button class="continue-button" onclick="continueGame('logic')">Продовжити гру</button>
-        </div>
-
-        <!-- Гра 4: Вибір правильного слова -->
-        <div class="game-container" id="word-game-container">
-            <h2>Вибір правильного слова</h2>
-            <button id="start-word-game" onclick="startWordGame()">Почати гру</button>
-            <div class="game-description" id="word-description">
-                <h3>Детальніше про гру</h3>
-                <p>Виберіть правильне слово для завершення речення.</p>
-            </div>
-            <div id="word-game" style="display:none;">
-                <p id="word-question">Обери правильне слово:</p>
-                <button id="optionA" onclick="checkWordAnswer('A')">A</button>
-                <button id="optionB" onclick="checkWordAnswer('B')">B</button>
-                <button id="optionC" onclick="checkWordAnswer('C')">C</button>
-            </div>
-            <div id="word-timer" class="timer">Час: 00:30</div>
-            <p id="word-limit" style="display:none;">Ви вже відповіли на всі питання сьогодні. Поверніться завтра.</p>
-            <button class="continue-button" onclick="continueGame('word')">Продовжити гру</button>
-        </div>
+    <!-- Форма для введення імені -->
+    <div class="form-container" id="form-container">
+        <input type="text" id="playerName" placeholder="Введіть ім'я гравця" />
+        <button onclick="submitName()">Підтвердити</button>
     </div>
 
+    <!-- Вибір рівня складності -->
+    <div class="level-select" id="level-select">
+        <button onclick="startLevel('easy')">Легкий рівень</button>
+        <button onclick="startLevel('medium')">Середній рівень</button>
+        <button onclick="startLevel('hard')">Важкий рівень</button>
+    </div>
+
+    <!-- Canvas для гри -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- Зірочки після перемоги -->
+    <div class="star-award" id="star-award">Вітаємо! Ви отримали 5 зірочок!</div>
+
+    <footer>
+        <p>&copy; 2024 Платформер. Все права захищено.</p>
+        <a href="#">Про нас</a> | <a href="#">Контакти</a> | <a href="#">Політика конфіденційності</a>
+    </footer>
+
     <script>
-        let maxQuestionsPerDay = { math: 10, memory: 3, logic: 2, word: 3 };
-        let answeredQuestions = { math: 0, memory: 0, logic: 0, word: 0 };
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const startButton = document.getElementById('start-button');
+        const levelSelect = document.getElementById('level-select');
+        const formContainer = document.getElementById('form-container');
+        const playerNameInput = document.getElementById('playerName');
+        const starAward = document.getElementById('star-award');
 
-        // Загальний таймер для всіх ігор
-        function startTimer(seconds, timerElementId, callback) {
-            let timer = seconds;
-            const timerElement = document.getElementById(timerElementId);
-            const interval = setInterval(function () {
-                let minutes = Math.floor(timer / 60);
-                let seconds = timer % 60;
-                timerElement.innerText = `Час: ${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
-                timer--;
+        // Розміри canvas
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-                if (timer < 0) {
-                    clearInterval(interval);
-                    alert("Час вийшов!");
-                    callback();
+        // Гравець
+        const player = {
+            x: 50,
+            y: canvas.height - 150,
+            width: 50,
+            height: 50,
+            speed: 5,
+            dx: 0,
+            dy: 0,
+            gravity: 0.8,
+            jumpPower: 15,
+            jumping: false,
+            grounded: false
+        };
+
+        // Перешкоди
+        const obstacles = [];
+        let levelDifficulty = 'easy';
+        let playerName = '';
+
+        // Старт гри
+        startButton.addEventListener('click', () => {
+            startButton.style.display = 'none';
+            formContainer.style.display = 'block';
+        });
+
+        // Підтвердити ім'я
+        function submitName() {
+            playerName = playerNameInput.value;
+            formContainer.style.display = 'none';
+            levelSelect.style.display = 'block';
+        }
+
+        // Старт рівня
+        function startLevel(level) {
+            levelDifficulty = level;
+            levelSelect.style.display = 'none';
+            resetGame();
+            gameLoop();
+        }
+
+        // Рестарт гри
+        function resetGame() {
+            player.x = 50;
+            player.y = canvas.height - 150;
+            player.dx = 0;
+            player.dy = 0;
+            obstacles.length = 0;
+            generateObstacles(levelDifficulty);
+        }
+
+        // Генерація перешкод
+        function generateObstacles(level) {
+            const numObstacles = level === 'easy' ? 3 : (level === 'medium' ? 5 : 7);
+            for (let i = 0; i < numObstacles; i++) {
+                obstacles.push({
+                    x: Math.random() * canvas.width,
+                    y: canvas.height - 100 - Math.random() * 100,
+                    width: 100 + Math.random() * 50,
+                    height: 20 + Math.random() * 30,
+                    speed: Math.random() * 3 + 1
+                });
+            }
+        }
+
+        // Основний цикл гри
+        function gameLoop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            updatePlayer();
+            handleObstacles();
+            detectCollisions();
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Оновлення гравця
+        function updatePlayer() {
+            player.y += player.dy;
+            player.x += player.dx;
+
+            if (player.y + player.height > canvas.height) {
+                player.y = canvas.height - player.height;
+                player.dy = 0;
+                player.jumping = false;
+                player.grounded = true;
+            } else {
+                player.dy += player.gravity;
+                player.grounded = false;
+            }
+
+            ctx.fillStyle = 'green';
+            ctx.fillRect(player.x, player.y, player.width, player.height);
+        }
+
+        // Рух гравця
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' || e.key === 'a') {
+                player.dx = -player.speed;
+            }
+            if (e.key === 'ArrowRight' || e.key === 'd') {
+                player.dx = player.speed;
+            }
+            if ((e.key === ' ' || e.key === 'ArrowUp' || e.key === 'w') && !player.jumping) {
+                player.dy = -player.jumpPower;
+                player.jumping = true;
+            }
+        });
+
+        document.addEventListener('keyup', (e) => {
+            if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'ArrowRight' || e.key === 'd') {
+                player.dx = 0;
+            }
+        });
+
+        // Обробка перешкод
+        function handleObstacles() {
+            obstacles.forEach(obstacle => {
+                obstacle.x -= obstacle.speed;
+                if (obstacle.x + obstacle.width < 0) {
+                    obstacle.x = canvas.width;
                 }
-            }, 1000);
-        }
 
-        // Гра 1: Математичні обчислення
-        let currentMathQuestionIndex = 0;
-        let mathQuestions = [
-            { question: "Скільки буде 2+2?", answer: "4" },
-            { question: "Скільки буде 3+5?", answer: "8" },
-            { question: "Скільки буде 10-6?", answer: "4" }
-        ];
-
-        function startMathGame() {
-            if (answeredQuestions.math >= maxQuestionsPerDay.math) {
-                document.getElementById('math-limit').style.display = "block";
-                return;
-            }
-
-            document.getElementById('math-game').style.display = "block";
-            document.getElementById('math-description').style.display = "none";
-            displayMathQuestion();
-            startTimer(30, 'math-timer', function () {
-                alert("Гру завершено!");
+                ctx.fillStyle = 'red';
+                ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
             });
         }
 
-        function displayMathQuestion() {
-            const question = mathQuestions[currentMathQuestionIndex];
-            document.getElementById('math-question').innerText = question.question;
-        }
-
-        function checkMathAnswer() {
-            const answer = document.getElementById('math-answer').value;
-            if (answer === mathQuestions[currentMathQuestionIndex].answer) {
-                alert("Правильно! Ви отримали 1 зірочку.");
-                answeredQuestions.math++;
-            } else {
-                alert("Неправильно!");
-            }
-            currentMathQuestionIndex++;
-            if (currentMathQuestionIndex < mathQuestions.length) {
-                displayMathQuestion();
-            } else {
-                alert("Всі питання завершені.");
-                document.getElementById('math-game').style.display = "none";
-            }
-        }
-
-        // Гра 2: Гра на пам'ять
-        let memorySequence = "1234";
-        function startMemoryGame() {
-            if (answeredQuestions.memory >= maxQuestionsPerDay.memory) {
-                document.getElementById('memory-limit').style.display = "block";
-                return;
-            }
-
-            document.getElementById('memory-game').style.display = "block";
-            document.getElementById('memory-description').style.display = "none";
-            document.getElementById('memory-sequence').innerText = memorySequence;
-            startTimer(30, 'memory-timer', function () {
-                alert("Гру завершено!");
+        // Виявлення зіткнень
+        function detectCollisions() {
+            obstacles.forEach(obstacle => {
+                if (player.x < obstacle.x + obstacle.width &&
+                    player.x + player.width > obstacle.x &&
+                    player.y < obstacle.y + obstacle.height &&
+                    player.y + player.height > obstacle.y) {
+                    // Зіткнення
+                    alert('Гра завершена! Ви зіткнулись з перешкодою!');
+                    resetGame();
+                }
             });
         }
 
-        function checkMemoryAnswer() {
-            const answer = document.getElementById('memory-answer').value;
-            if (answer === memorySequence) {
-                alert("Правильно! Ви отримали 1 зірочку.");
-                answeredQuestions.memory++;
-            } else {
-                alert("Неправильно!");
-            }
-        }
-
-        // Гра 3: Логічні задачі
-        let logicQuestions = [
-            { question: "Яка правильна відповідь?", options: { A: "5", B: "8", C: "3" }, correct: "B" },
-            { question: "Скільки буде 7+5?", options: { A: "12", B: "13", C: "14" }, correct: "A" }
-        ];
-        let currentLogicQuestionIndex = 0;
-
-        function startLogicGame() {
-            if (answeredQuestions.logic >= maxQuestionsPerDay.logic) {
-                document.getElementById('logic-limit').style.display = "block";
-                return;
-            }
-
-            document.getElementById('logic-game').style.display = "block";
-            document.getElementById('logic-description').style.display = "none";
-            displayLogicQuestion();
-            startTimer(30, 'logic-timer', function () {
-                alert("Гру завершено!");
-            });
-        }
-
-        function displayLogicQuestion() {
-            const question = logicQuestions[currentLogicQuestionIndex];
-            document.getElementById('logic-question').innerText = question.question;
-            document.getElementById('optionA').innerText = question.options.A;
-            document.getElementById('optionB').innerText = question.options.B;
-            document.getElementById('optionC').innerText = question.options.C;
-        }
-
-        function checkLogicAnswer(option) {
-            if (option === logicQuestions[currentLogicQuestionIndex].correct) {
-                alert("Правильно! Ви отримали 1 зірочку.");
-                answeredQuestions.logic++;
-            } else {
-                alert("Неправильно!");
-            }
-            currentLogicQuestionIndex++;
-            if (currentLogicQuestionIndex < logicQuestions.length) {
-                displayLogicQuestion();
-            } else {
-                alert("Всі питання завершені.");
-                document.getElementById('logic-game').style.display = "none";
-            }
-        }
-
-        // Гра 4: Вибір правильного слова
-        let wordQuestions = [
-            { question: "Обери правильне слово: Синій — це...", options: { A: "колір", B: "форма", C: "розмір" }, correct: "A" }
-        ];
-
-        let currentWordQuestionIndex = 0;
-
-        function startWordGame() {
-            document.getElementById('word-game').style.display = "block";
-            document.getElementById('word-description').style.display = "none";
-            displayWordQuestion();
-            startTimer(30, 'word-timer', function () {
-                alert("Гру завершено!");
-            });
-        }
-
-        function displayWordQuestion() {
-            const question = wordQuestions[currentWordQuestionIndex];
-            document.getElementById('word-question').innerText = question.question;
-            document.getElementById('optionA').innerText = question.options.A;
-            document.getElementById('optionB').innerText = question.options.B;
-            document.getElementById('optionC').innerText = question.options.C;
-        }
-
-        function checkWordAnswer(option) {
-            if (option === wordQuestions[currentWordQuestionIndex].correct) {
-                alert("Правильно! Ви отримали 1 зірочку.");
-                answeredQuestions.word++;
-            } else {
-                alert("Неправильно!");
-            }
-            currentWordQuestionIndex++;
-            if (currentWordQuestionIndex < wordQuestions.length) {
-                displayWordQuestion();
-            } else {
-                alert("Всі питання завершені.");
-                document.getElementById('word-game').style.display = "none";
-            }
+        // Виведення зірочок після перемоги
+        function winGame() {
+            starAward.style.display = 'block';
+            setTimeout(() => {
+                starAward.style.display = 'none';
+                resetGame();
+            }, 3000);
         }
     </script>
-</body>
 
+</body>
 </html>
