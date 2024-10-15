@@ -14,9 +14,10 @@
             align-items: center;
             height: 100vh;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
         }
 
-        /* Велика стилізована кнопка */
+        /* Стилізована кнопка */
         #canteen-button {
             display: block;
             width: 300px;
@@ -37,17 +38,25 @@
             background: linear-gradient(135deg, #0083b0, #00b4db);
             transform: scale(1.05);
         }
+
+        /* Адаптивність для мобільних пристроїв */
+        @media (max-width: 768px) {
+            #canteen-button {
+                width: 250px;
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Велика стилізована кнопка для переходу на сайт їдальні -->
+    <!-- Кнопка для переходу на сайт їдальні -->
     <button id="canteen-button" onclick="goToCanteen()">На сайт їдальні</button>
 
     <script>
-        // Функція для перенаправлення на index.html з урахуванням шляху
+        // Функція для перенаправлення на сайт їдальні
         function goToCanteen() {
-            window.location.href = 'pages/index.html'; // Абсолютний шлях до файлу
+            window.location.href = 'pages/index.html'; // Абсолютний шлях
         }
     </script>
 

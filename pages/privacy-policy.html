@@ -5,19 +5,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Політика конфіденційності - Шкільна їдальня</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
     <style>
-        /* Основні стилі */
         body {
-            font-family: 'Arial', sans-serif;
-            background: #f4f4f4;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(120deg, #74ebd5, #acb6e5);
+            color: white;
             margin: 0;
             padding: 0;
-            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
-            background: #2c3e50;
-            padding: 15px 0;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 0;
             text-align: center;
             position: sticky;
             top: 0;
@@ -42,7 +46,6 @@
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s ease;
-            font-size: 18px;
         }
 
         nav ul li a:hover {
@@ -50,101 +53,71 @@
             text-shadow: 0 0 8px #ff9a9e;
         }
 
-        /* Стилі для основної частини сторінки */
-        main {
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .privacy-policy-section {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .privacy-section {
             max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
-            font-size: 1.1em;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
         }
 
-        .privacy-policy-section h1 {
+        .privacy-section h1 {
             font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #2c3e50;
+            color: #fff;
+            text-shadow: 0 0 10px #fff, 0 0 20px #66a6ff;
         }
 
-        .privacy-policy-section h2 {
-            font-size: 1.8em;
-            margin-top: 30px;
-            color: #2980b9;
-        }
-
-        .privacy-policy-section p {
+        .privacy-section p {
             font-size: 1.2em;
-            color: #333;
-            margin-bottom: 15px;
+            color: #f0f0f0;
+            line-height: 1.6;
         }
 
-        .privacy-policy-section ul {
-            text-align: left;
-            padding-left: 20px;
-            font-size: 1.1em;
-            color: #333;
-        }
-
-        .privacy-policy-section ul li {
-            margin: 5px 0;
-        }
-
-        /* Стилі для футера */
         footer {
-            background: #2c3e50;
+            background: rgba(0, 0, 0, 0.6);
             padding: 20px;
             text-align: center;
             color: white;
             font-size: 1em;
-            margin-top: 50px;
+            position: relative;
+            margin-top: auto;
         }
 
         footer p {
             margin: 0;
         }
 
-        /* Адаптивні стилі */
-        @media (max-width: 768px) {
-            .privacy-policy-section h1 {
-                font-size: 2em;
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
             }
-
-            .privacy-policy-section h2 {
-                font-size: 1.6em;
-            }
-
-            .privacy-policy-section p {
-                font-size: 1em;
+            100% {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
 </head>
 
 <body>
-
     <header>
         <nav>
             <ul>
-                <li><a href="./index.html">Головна</a></li>
-                <li><a href="../menu.html">Меню</a></li>
-                <li><a href="../tests/index.html">Тести</a></li>
-                <li><a href="./contacts.html">Контакти</a></li>
-                
+              <li><a href="#">Головна</a></li>
+              <li><a href="#">Меню</a></li>
+              <li><a href="#">Тести</a></li>
+              <li><a href="#">Контакти</a></li>
             </ul>
-        </nav>
+          </nav>
     </header>
 
     <main>
-        <section class="privacy-policy-section">
+        <section class="privacy-section">
             <h1>Політика конфіденційності</h1>
-
             <p>Ми, в Шкільній їдальні, дуже серйозно ставимося до захисту ваших персональних даних. У цій політиці
                 конфіденційності пояснюється, як ми збираємо, використовуємо і захищаємо ваші особисті дані при
                 використанні нашого веб-сайту.</p>
@@ -187,7 +160,6 @@
             <p>&copy; 2024 Шкільна їдальня. Всі права захищені.</p>
         </div>
     </footer>
-
 </body>
 
 </html>

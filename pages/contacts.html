@@ -7,22 +7,24 @@
     <title>Шкільна їдальня</title>
     <link rel="stylesheet" href="C:\Users\Admin\Documents\GitHub\site_competition\school-canteen-project\css\styles.css">
     <style>
-        /* Оновлені стилі для сторінки Контакти */
+        /* Оновлені стилі для більшої читабельності */
         
         body {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Roboto', sans-serif; /* Зміна на більш читабельний шрифт */
             background: linear-gradient(120deg, #74ebd5, #acb6e5);
-            color: white;
+            color: #333; /* Темний текст для кращого контрасту */
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            font-size: 18px; /* Збільшення розміру тексту */
+            line-height: 1.6; /* Поліпшення інтерліньяжу для читабельності */
         }
 
         header {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 10px 0;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
             text-align: center;
             position: sticky;
             top: 0;
@@ -39,13 +41,14 @@
         }
 
         nav ul li {
-            margin: 0 15px;
+            margin: 0 20px;
         }
 
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: bold;
+            font-size: 20px; /* Більший шрифт для навігації */
             transition: color 0.3s ease;
         }
 
@@ -57,17 +60,18 @@
         .contact-section {
             max-width: 600px;
             margin: 50px auto;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.9); /* Зробимо фон більш контрастним для тексту */
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             text-align: center;
             animation: fadeInUp 1s ease-out;
+            color: #333; /* Темний колір для кращої читабельності */
         }
 
         .contact-section h1 {
             font-size: 2.5em;
-            color: #fff;
+            color: #333;
             text-shadow: 0 0 10px #fff, 0 0 20px #66a6ff;
         }
 
@@ -77,22 +81,22 @@
 
         .form-group label {
             font-size: 1.2em;
-            color: #fff;
+            color: #333; /* Темніший текст */
         }
 
         .form-group input, .form-group textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: none;
             border-radius: 5px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
             font-size: 1em;
             transition: background 0.3s ease, transform 0.3s ease;
         }
 
         .form-group input:focus, .form-group textarea:focus {
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 1);
             outline: none;
             transform: scale(1.05);
         }
@@ -115,7 +119,7 @@
         }
 
         footer {
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.8);
             padding: 20px;
             text-align: center;
             color: white;
@@ -139,19 +143,90 @@
                 transform: translateY(0);
             }
         }
+
+        /* Мобільна адаптивність */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            header {
+                padding: 10px 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .contact-section {
+                margin: 30px 20px;
+                padding: 20px;
+            }
+
+            .contact-section h1 {
+                font-size: 2em;
+            }
+
+            .form-group input, .form-group textarea {
+                font-size: 1.1em;
+                padding: 10px;
+            }
+
+            button[type="submit"] {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+
+            footer {
+                font-size: 0.9em;
+            }
+        }
+
+        /* Для дуже маленьких екранів (менше 480px) */
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+
+            nav ul li a {
+                font-size: 16px;
+            }
+
+            .contact-section h1 {
+                font-size: 1.8em;
+            }
+
+            .form-group input, .form-group textarea {
+                font-size: 1em;
+                padding: 8px;
+            }
+
+            button[type="submit"] {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+
+            footer {
+                font-size: 0.8em;
+            }
+        }
     </style>
 </head>
 
 <body>
     <header>
         <nav>
-          <ul>
-            <li><a href="./index.html">Головна</a></li>
-            <li><a href=".././menu.html">Меню</a></li>
-            <li><a href="../tests/index.html">Тести</a></li>
-            <li><a href=".././games.html">Ігри</a></li>
-          </ul>
-        </nav>
+            <ul>
+              <li><a href="#">Головна</a></li>
+              <li><a href="#">Меню</a></li>
+              <li><a href="#">Тести</a></li>
+              <li><a href="#">Контакти</a></li>
+            </ul>
+          </nav>
     </header>
 
     <main>
