@@ -60,7 +60,7 @@
       }
 
       .hero {
-        background: url("path/to/your/image.jpg") no-repeat center center;
+        background: url("https://optim.tildacdn.com/tild3564-6436-4134-a234-343636356162/-/resize/824x/-/format/webp/interier-restorana.jpg") no-repeat center center;
         background-size: cover;
         height: 70vh;
         display: flex;
@@ -70,7 +70,9 @@
         text-align: center;
         padding: 0 20px;
         position: relative;
+        background-attachment: fixed; /* Фіксує фон при прокручуванні */
       }
+      
 
       .hero h1 {
         font-size: 3rem;
@@ -171,6 +173,51 @@
           font-size: 1rem;
           padding: 12px 24px;
         }
+
+        header {
+          padding: 10px 0;
+        }
+
+        nav ul {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        nav ul li {
+          margin: 5px 0;
+        }
+
+        .footer {
+          padding: 15px;
+        }
+
+        .footer-links a {
+          font-size: 12px;
+        }
+      }
+
+      /* Адаптивні стилі для великих екранів (таблети, ноутбуки) */
+      @media (min-width: 1024px) {
+        .hero {
+          height: 80vh;
+        }
+
+        .hero h1 {
+          font-size: 4rem;
+        }
+
+        .cta-button {
+          font-size: 1.5rem;
+          padding: 18px 36px;
+        }
+
+        .footer {
+          padding: 30px;
+        }
+
+        .footer-links a {
+          font-size: 16px;
+        }
       }
     </style>
   </head>
@@ -180,8 +227,6 @@
       <nav>
         <ul>
           <li><a href="#">Головна</a></li>
-          <li><a href="#">Меню</a></li>
-          <li><a href="#">Ігри</a></li>
           <li><a href="#">Ваш гаманець</a></li>
           <li><a href="auth.html">Авторизація</a></li>
         </ul>
@@ -189,18 +234,10 @@
     </header>
 
     <section class="hero">
-      <!-- Зображення для хедера -->
-      <img
-        src="https://optim.tildacdn.com/tild3564-6436-4134-a234-343636356162/-/resize/824x/-/format/webp/interier-restorana.jpg"
-        alt="Головне зображення"
-        class="hero-image"
-      />
       <h1>Ласкаво просимо до шкільної їдальні!</h1>
       <p>Виберіть смачні страви, заробляйте зірочки та отримуйте бонуси!</p>
       <a href="./menu.html" class="cta-button">Переглянути меню</a>
     </section>
-
-    
 
     <footer>
       <p>&copy; 2024 Шкільна їдальня. Всі права захищені.</p>
@@ -210,5 +247,32 @@
         <a href="#">Контакти</a>
       </div>
     </footer>
+
+    <script>
+      // Сценарій для додавання товарів до кошика
+      const addToCartButton = document.querySelector(".cta-button");
+      addToCartButton.addEventListener("click", () => {
+        // Створити модальне вікно
+        const modal = document.createElement("div");
+        modal.classList.add("modal");
+        modal.innerHTML = `
+          <div class="modal-content">
+            <p>Товар додано до кошика!</p>
+            <button id="confirm">Підтвердити</button>
+            <button id="cancel">Скасувати</button>
+          </div>
+        `;
+        document.body.appendChild(modal);
+
+        // Дії кнопок
+        document.getElementById("confirm").addEventListener("click", () => {
+          alert("Товар додано до кошика!");
+          modal.remove();
+        });
+        document.getElementById("cancel").addEventListener("click", () => {
+          modal.remove();
+        });
+      });
+    </script>
   </body>
 </html>
