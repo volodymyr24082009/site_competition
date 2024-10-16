@@ -112,13 +112,6 @@
             transform: scale(1.05);
         }
 
-        @media (max-width: 768px) {
-            #canteen-button {
-                width: 250px;
-                font-size: 20px;
-            }
-        }
-
         /* Для адаптивності на мобільних пристроях */
         @media (max-width: 600px) {
             .login-container {
@@ -129,17 +122,17 @@
 </head>
 <body>
 
-    <!-- Привітальний текст -->
     <div class="welcome-text">
         <p>Добрий день, шановний користувачу!</p>
         <p>Вітаємо на сайті Інноваційної Шкільної їдальні!</p>
         <p>Зареєструйтесь або увійдіть у наявний акаунт, щоб зайти на головну сторінку сайту.</p>
     </div>
 
-    <!-- Форма входу/реєстрації -->
-    <section class="login-container">
-        <h1>Вхід до шкільної їдальні</h1>
-        <form action="login-action.php" method="post">
+    <section class="login-container" id="auth-container">
+        <h1>Реєстрація/Вхід до шкільної їдальні</h1>
+        
+        <!-- Форма входу/реєстрації -->
+        <form id="auth-form">
             <div class="input-group">
                 <label for="email">Електронна пошта</label>
                 <input type="email" id="email" name="email" required>
@@ -148,22 +141,67 @@
                 <label for="password">Пароль</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit" class="login-btn">Увійти</button>
+            <button type="submit" class="login-btn" id="submit-btn">Зареєструватися</button>
         </form>
 
         <div class="login-links">
-            <a class="register-now" href="register.html">Зареєструйтесь зараз</a>
-            <a class="forget-password" href="forgot-password.html">Забули пароль?</a>
+            <a href="javascript:void(0);" id="toggle-auth">Маєте акаунт? Увійти</a>
         </div>
     </section>
 
-    <!-- Кнопка для переходу на сайт їдальні -->
     <button id="canteen-button" onclick="goToCanteen()">На сайт їдальні</button>
 
     <script>
-        // Функція для перенаправлення на сайт їдальні
+        // Перемикання між формою реєстрації та входу
+        const toggleAuth = document.getElementById("toggle-auth");
+        const submitBtn = document.getElementById("submit-btn");
+        const authForm = document.getElementById("auth-form");
+        const authContainer = document.getElementById("auth-container");
+
+        // Перемикання
+        toggleAuth.addEventListener("click", () => {
+            if (submitBtn.textContent === "Зареєструватися") {
+                submitBtn.textContent = "Увійти";
+                toggleAuth.textContent = "Ще не маєте акаунта? Реєстрація";
+            } else {
+                submitBtn.textContent = "Зареєструватися";
+                toggleAuth.textContent = "Маєте акаунт? Увійти";
+            }
+        });
+
+        // Обробка форми
+        authForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            // Реєстрація
+            if (submitBtn.textContent === "Зареєструватися") {
+                // Збереження користувача в localStorage
+                localStorage.setItem("email", email);
+                localStorage.setItem("password", password);
+
+                alert("Вітаємо! Ви успішно зареєстровані!");
+                authContainer.innerHTML = "<h2>Реєстрація успішна! Тепер можете увійти.</h2>";
+                toggleAuth.style.display = "none"; // Сховати перемикач
+            } else {
+                // Перевірка входу
+                const storedEmail = localStorage.getItem("email");
+                const storedPassword = localStorage.getItem("password");
+
+                if (email === storedEmail && password === storedPassword) {
+                    alert("Вхід успішний!");
+                    goToCanteen();
+                } else {
+                    alert("Невірний логін або пароль!");
+                }
+            }
+        });
+
+        // Перехід на сайт їдальні
         function goToCanteen() {
-            window.location.href = 'pages/index.html'; // Абсолютний шлях
+            window.location.href = 'pages/index.html';
         }
     </script>
 

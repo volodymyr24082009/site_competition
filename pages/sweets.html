@@ -180,15 +180,13 @@
     <p>&copy; 2024 Шкільна їдальня. Всі права захищені.</p>
   </footer>
   <script>
- 
-    let cart = [];
-
+    // Функція для додавання товару до кошика
     function addToCart(item) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
       cart.push(item);
-      alert(item + ' додано до кошика!');
       localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${item} додано до кошика`);
     }
-
-</script>
+  </script>
 </body>
 </html>
