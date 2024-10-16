@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Їжа - Шкільна їдальня</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+  /* Загальні стилі */
+  body {
+    font-family: "Orbitron", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #ff9a9e 0%, #66a6ff 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  header {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  header nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  header nav ul li {
+    margin: 0 20px;
+  }
+  
+  header nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+  }
+  
+  header nav ul li a:hover {
+    color: #ff9a9e;
+    transform: scale(1.1);
+    text-shadow: 0 0 8px #ff9a9e;
+  }
+  
+  .menu-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    padding: 20px;
+    overflow: auto;
+    transition: padding 0.3s ease;
+  }
+  
+  .menu-item {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s, background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .menu-item img {
+    width: 200px;  /* Фіксована ширина */
+    height: 200px; /* Фіксована висота */
+    object-fit: cover; /* Забезпечує відповідність пропорцій */
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .menu-item:hover {
+    transform: scale(1.05);
+    background-color: #ff9a9e;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+  }
+  
+  .menu-item:hover img {
+    transform: scale(1.1);
+  }
+  
+  .menu-item h2 {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .menu-item p {
+    font-size: 14px;
+  }
+  
+  /* Контейнер для кнопок і тексту, вирівнювання по одному рядку */
+  .btn-container {
+    display: flex;
+    justify-content: center; /* Вирівнювання по горизонталі */
+    align-items: center;     /* Вирівнювання по вертикалі */
+    gap: 20px;               /* Відступи між елементами */
+    margin-top: 20px;
+  }
+  
+  .btn {
+    background-color: #ff9a9e;
+    color: white;
+    border: none;
+    padding: 15px 30px; /* Фіксований розмір кнопок */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-align: center;
+  }
+  
+  .btn:hover {
+    background-color: #ff6a6a;
+    transform: scale(1.05);
+  }
+  
+  footer {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Контейнер для фото та кнопок, все по одному рівню */
+  .item-container {
+    display: flex;
+    justify-content: center; /* Вирівнювання елементів по горизонталі */
+    align-items: center;     /* Вирівнювання елементів по вертикалі */
+    gap: 20px;               /* Відстань між елементами */
+    margin-top: 20px;
+  }
+  
+  
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Початкова сторінка</a></li>
+        <li><a href="index.html">На початкову сторінку</a></li>
+        <li><a href="menu.html">Головна</a></li>
+        <li><a href="food.html">Їжа</a></li>
+        <li><a href="drink.html">Напої</a></li>
+        <li><a href="sweets.html">Солодощі</a></li>
+        <li><a href="cart.html">Кошик</a></li>
+       
+      </ul>
+    </nav>
+  </header>
+
+  <div class="main-content">
+    <div class="menu-items">
+      <!-- Товари категорії "Їжа" -->
+      <div class="menu-item">
+        <img src="https://allolosos.com.ua/i/akcii/64aaa656285a5.jpg" alt="Піца" />
+        <h2>Піца</h2>
+        <p>Томат, сир, спеції</p>
+        <button class="btn">Додати до кошика</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://fort.crimea.com/catering/uploads/fotos/53d15b7a-27a5-11ed-bba1-00155d00fb0d_1.jpg" alt="Сендвіч" />
+        <h2>Сендвіч</h2>
+        <p>Хліб, курка, овочі</p>
+        <button class="btn">Додати до кошика</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://myastoriya.com.ua/upload/medialibrary/906/9066405f4f7b4bc5a7d07a0f52bb0734.png" alt="Бургер" />
+        <h2>Бургер</h2>
+        <p>М'ясо, салат, соус</p>
+        <button class="btn">Додати до кошика</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Hamburger_%28black_bg%29.jpg/1200px-Hamburger_%28black_bg%29.jpg" alt="Гамбургер" />
+        <h2>Гамбургер</h2>
+        <p>М'ясо, сир, хліб</p>
+        <button class="btn">Додати до кошика</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://burgersushipoint.com.ua/wp-content/uploads/2021/01/burger-sushi-point_meny_4-6.jpg" alt="Картопля фрі" />
+        <h2>Картопля фрі</h2>
+        <p>Картопля, спеції</p>
+        <button class="btn">Додати до кошика</button>
+      </div>
+
+      <!-- Додати ще 45 товарів -->
+      <div class="menu-item">
+        <img src="https://citypizza.com.ua/wp-content/uploads/2019/09/Kurytsa-Hryl.jpg" alt="Курка гриль" />
+        <h2>Курка гриль</h2>
+        <p>Соковита курка з приправами</p>
+        <button class="btn">Додати до кошика</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://myastoriya.com.ua/upload/resize_cache/iblock/c80/1000_800_1/y3z8zl4hs3sy9e24d0gzj1echi9jplyz.jpg" alt="Кебаб" />
+        <h2>Кебаб</h2>
+        <p>М'ясо, овочі на грилі</p>
+        <button class="btn">Додати до кошика</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://lifehacker.ru/wp-content/uploads/2018/04/Pasta_1523360590.jpg" alt="Паста" />
+        <h2>Паста</h2>
+        <p>Макарони, соус, сир</p>
+        <button class="btn">Додати до кошика</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Mixed_Green_Salad_%2815977106804%29.jpg" alt="Салат" />
+        <h2>Салат</h2>
+        <p>Овочі, олія</p>
+        <button class="btn">Додати до кошика</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwvSI9UrMbBv3PJf7IRae4HKgtgrRXg2m-Rw&s" alt="Різотто" />
+        <h2>Різотто</h2>
+        <p>Рис, гриби, спеції</p>
+        <button class="btn">Додати до кошика</button>
+      </div>
+      <!-- Повторити для кожного з 50 товарів -->
+      <div class="menu-item">
+        <img src="https://myastoriya.com.ua/upload/resize_cache/iblock/4fc/1000_800_1/4fcfbca6695cc1d2d75414812a08ac7b.jpg" alt="Пельмені" />
+        <h2>Пельмені</h2>
+        <p>М'ясо, тісто</p>
+        <button class="btn">Додати до кошика</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unian.net/photos/2022_09/thumb_files/1200_0_1662892107-3846.jpg" alt="Борщ" />
+        <h2>Борщ</h2>
+        <p>Буряк, м'ясо, овочі</p>
+        <button class="btn">Додати до кошика</button>
+      </div>
+      <!-- Повторіть цей блок ще 45 разів для 50 товарів -->
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Шкільна їдальня. Всі права захищені.</p>
+  </footer>
+<script>
+ 
+    let cart = [];
+
+    function addToCart(item) {
+      cart.push(item);
+      alert(item + ' додано до кошика!');
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+</script>
+</body>
+</html>

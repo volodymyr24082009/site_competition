@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Солодощі - Шкільна їдальня</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* Стилі ті ж самі, що і для food.html */
+    body {
+      font-family: "Orbitron", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(120deg, #ff9a9e 0%, #66a6ff 100%);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    header nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    header nav ul li {
+      margin: 0 20px;
+    }
+
+    header nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    header nav ul li a:hover {
+      color: #ff9a9e;
+      transform: scale(1.1);
+      text-shadow: 0 0 8px #ff9a9e;
+    }
+
+    .main-content {
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    .menu-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      justify-items: center;
+      padding: 20px;
+    }
+
+    .menu-item {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      text-align: center;
+      transition: transform 0.3s, background-color 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .menu-item img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .menu-item h2 {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    .menu-item p {
+      font-size: 16px;
+    }
+
+    .btn {
+      background-color: #ff9a9e;
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #ff6a6a;
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Початкова сторінка</a></li>
+        <li><a href="menu.html">Меню</a></li>
+        <li><a href="food.html">Їжа</a></li>
+        <li><a href="drink.html">Напої</a></li>
+        <li><a href="sweets.html">Солодощі</a></li>
+        <li><a href="cart.html">Кошик</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="main-content">
+    <div class="menu-items">
+      <!-- Товари категорії "Солодощі" -->
+      <div class="menu-item">
+        <img src="https://tea.ua/upload/blog/0122/1901/chocolate2/1.png" alt="Шоколад" />
+        <h2>Шоколад</h2>
+        <p>Темний, молочний</p>
+        <button class="btn">Додати до кошика</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://klymovska.com/wp-content/uploads/2022/11/cookies-with-chocolate-and-nuts.jpg" alt="Печиво" />
+        <h2>Печиво</h2>
+        <p>Ванільне, шоколадне</p>
+        <button class="btn">Додати до кошика</button>
+      </div>
+      <!-- Додати ще 48 товарів -->
+      <div class="menu-item">
+        <img src="https://dvazajci.com/wp-content/uploads/2021/05/B2417518-2D6A-47A7-9893-8E534CD6758A.png-960x536.jpg" alt="Карамель" />
+        <h2>Карамель</h2>
+        <p>Солодка карамель</p>
+        <button class="btn">Додати до кошика</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://ssdp.com.ua/uploads/products/big/1631732541_aac51c414ebe9ac0f3d6d1044b485672.png" alt="Маршмелоу" />
+        <h2>Маршмелоу</h2>
+        <p>Легкі зефірки</p>
+        <button class="btn">Додати до кошика</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://andjoy.com.ua/wp-content/uploads/2020/01/193A4174-scaled-e1694514594870.jpg" alt="Торт" />
+        <h2>Торт</h2>
+        <p>Шоколадний, ванільний</p>
+        <button class="btn">Додати до кошика</button>
+      </div>
+      <!-- Повторити для всіх товарів -->
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Шкільна їдальня. Всі права захищені.</p>
+  </footer>
+  <script>
+ 
+    let cart = [];
+
+    function addToCart(item) {
+      cart.push(item);
+      alert(item + ' додано до кошика!');
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+</script>
+</body>
+</html>

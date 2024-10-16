@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Кошик - Шкільна їдальня</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* Глобальні стилі */
+    body {
+      font-family: "Orbitron", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff7a18, #af002d, #2a2a72);
+      background-size: 400% 400%;
+      animation: gradientAnimation 10s ease infinite;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      justify-content: flex-start;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transform: translateY(0);
+      transition: transform 0.3s ease;
+    }
+
+    header:hover {
+      transform: translateY(-5px);
+    }
+
+    header nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    header nav ul li {
+      margin: 0 20px;
+    }
+
+    header nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: rgba(0, 0, 0, 0.3);
+      transition: color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    header nav ul li a:hover {
+      color: #ff7a18;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .cart-container {
+      padding: 20px;
+      margin-top: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      flex-grow: 1;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      overflow-y: auto;
+      flex-grow: 1;
+      max-height: 70vh; /* Обмежує висоту */
+    }
+
+    .cart-container h1 {
+      text-align: center;
+      font-size: 30px;
+      margin-bottom: 20px;
+      color: #ff7a18;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .cart-item:hover {
+      transform: scale(1.05);
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .cart-item img {
+      width: 50px;
+      height: 50px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .cart-item div {
+      flex-grow: 1;
+      padding-left: 15px;
+    }
+
+    .cart-item h3 {
+      font-size: 18px;
+      margin: 0;
+      color: #fff;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .cart-item p {
+      font-size: 14px;
+      color: #ffd700;
+      margin-top: 5px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-remove {
+      background-color: #ff6a6a;
+      color: white;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-remove:hover {
+      background-color: #ff4d4d;
+    }
+
+    .cart-total {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 8px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .cart-total p {
+      font-size: 20px;
+      color: #ffd700;
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      color: white;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-add {
+      background-color: #66a6ff;
+      color: white;
+      padding: 10px 16px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-add:hover {
+      background-color: #4a8bcb;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Початкова сторінка</a></li>
+        <li><a href="menu.html">Меню</a></li>
+        <li><a href="food.html">Їжа</a></li>
+        <li><a href="drink.html">Напої</a></li>
+        <li><a href="sweets.html">Солодощі</a></li>
+        <li><a href="cart.html">Кошик</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="cart-container">
+    <h1>Ваш Кошик</h1>
+    <!-- Секція для товарів, доданих до кошика -->
+    <div id="cart-items">
+      <p>Ваш кошик порожній</p>
+    </div>
+
+    <div class="cart-total">
+      <p>Загальна сума: <span id="total-amount">0 грн</span></p>
+      <button class="btn-add" onclick="checkout()">Оформити замовлення</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Шкільна їдальня. Всі права захищені.</p>
+  </footer>
+
+  <script>
+    // Ініціалізація кошика з localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Функція для додавання товару в кошик
+    function addItem(name, price, image) {
+      const item = { name, price, image };
+      cart.push(item);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      displayCart();
+    }
+
+    // Функція для відображення кошика на сторінці
+    function displayCart() {
+      const cartItemsContainer = document.getElementById('cart-items');
+      const totalAmountElement = document.getElementById('total-amount');
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = "<p>Ваш кошик порожній</p>";
+        totalAmountElement.textContent = "0 грн";
+        return;
+      }
+
+      cartItemsContainer.innerHTML = "";
+      let totalAmount = 0;
+
+      cart.forEach((item, index) => {
+        const itemElement = document.createElement('div');
+        itemElement.className = 'cart-item';
+
+        itemElement.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" />
+          <div>
+            <h3>${item.name}</h3>
+            <p>${item.price} грн</p>
+          </div>
+          <button class="btn-remove" onclick="removeItem(${index})">Видалити</button>
+        `;
+
+        cartItemsContainer.appendChild(itemElement);
+        totalAmount += item.price;
+      });
+
+      totalAmountElement.textContent = `${totalAmount} грн`;
+    }
+
+    // Функція для видалення товару з кошика
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      displayCart();
+    }
+
+    // Функція для оформлення замовлення
+    function checkout() {
+      alert("Замовлення оформлено! Дякуємо за покупку.");
+      cart = [];
+      localStorage.setItem('cart', JSON.stringify(cart));
+      displayCart();
+    }
+
+    // Викликаємо функцію для відображення кошика
+    displayCart();
+  </script>
+
+</body>
+</html>
