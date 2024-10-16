@@ -1,213 +1,214 @@
 <!DOCTYPE html>
 <html lang="uk">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Шкільна їдальня</title>
-    <link rel="stylesheet" href="./styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        /* Основні стилі */
-        body {
-            font-family: 'Orbitron', sans-serif;
-            background: linear-gradient(45deg, #6a11cb, #2575fc, #2ecc71);
-            color: white;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
+      body {
+        font-family: "Orbitron", sans-serif;
+        background: linear-gradient(45deg, #6a11cb, #2575fc, #2ecc71);
+        color: white;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        box-sizing: border-box;
+      }
 
-        header {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px 0;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            width: 100%;
-        }
+      header {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px 0;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        width: 100%;
+      }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+      }
 
-        nav ul li {
-            margin: 0 15px;
-        }
+      nav ul li {
+        margin: 0 15px;
+      }
 
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease, transform 0.3s ease;
-            font-size: 18px;
-        }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease, transform 0.3s ease;
+        font-size: 18px;
+      }
 
-        nav ul li a:hover {
-            color: #ff9a9e;
-            transform: scale(1.1);
-            text-shadow: 0 0 8px #ff9a9e;
-        }
+      nav ul li a:hover {
+        color: #ff9a9e;
+        transform: scale(1.1);
+        text-shadow: 0 0 8px #ff9a9e;
+      }
 
-        /* Героїчний блок */
-        .hero {
-            background: linear-gradient(135deg, #ff6f61, #ff3d7f); /* Красива градієнтна зафарбовка */
-            height: 70vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            position: relative;
-        }
+      .hero {
+        background: url("path/to/your/image.jpg") no-repeat center center;
+        background-size: cover;
+        height: 70vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+        position: relative;
+      }
 
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+      }
+
+      .cta-button {
+        background: linear-gradient(135deg, #f1c40f, #e67e22);
+        color: #000;
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+      }
+
+      .cta-button:hover {
+        background: linear-gradient(135deg, #e67e22, #f1c40f);
+      }
+
+      .auth-container {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .auth-container h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+
+      .auth-container input {
+        padding: 10px;
+        font-size: 1rem;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .auth-container button {
+        background: #007bff;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
+      .auth-container button:hover {
+        background: #0056b3;
+      }
+
+      .footer {
+        background: linear-gradient(
+          135deg,
+          rgba(0, 0, 0, 0.8),
+          rgba(0, 0, 0, 0.6)
+        );
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        text-align: center;
+        width: 100%;
+      }
+
+      .footer-links a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+
+      .footer-links a:hover {
+        color: #ff9a9e;
+      }
+
+      /* Адаптивні стилі для мобільних пристроїв */
+      @media (max-width: 768px) {
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+          font-size: 2.5rem;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+          font-size: 1rem;
         }
 
         .cta-button {
-            background: linear-gradient(135deg, #f1c40f, #e67e22);
-            color: #000;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s ease;
+          font-size: 1rem;
+          padding: 12px 24px;
         }
-
-        .cta-button:hover {
-            background: linear-gradient(135deg, #e67e22, #f1c40f);
-        }
-
-        /* Стилі для футера */
-        footer {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            text-align: center;
-            width: 100%;
-        }
-
-        footer .footer-info {
-            margin-top: 20px;
-            font-size: 0.9rem;
-        }
-
-        footer a {
-            text-decoration: none;
-            color: #f1c40f;
-            margin: 0 10px;
-            transition: color 0.3s ease;
-        }
-
-        footer a:hover {
-            color: #e67e22;
-        }
-
-        /* Адаптивність для мобільних пристроїв */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .cta-button {
-                padding: 12px 24px;
-                font-size: 1rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav ul li {
-                margin: 10px 0;
-            }
-
-            footer {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero {
-                height: 60vh; /* зменшення висоти героя на мобільних пристроях */
-            }
-
-            header {
-                position: relative; /* змінено для мобільних пристроїв */
-                top: 0;
-            }
-        }
-
-        /* Клас для прозорості фото фону */
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: -1; /* розташування на фоні */
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <nav>
-            <ul>
-              <li><a href="#">Головна</a></li>
-              <li><a href="#">Меню</a></li>
-              <li><a href="#">Тести</a></li>
-              <li><a href="#">Контакти</a></li>
-            </ul>
-          </nav>
+      <nav>
+        <ul>
+          <li><a href="#">Головна</a></li>
+          <li><a href="#">Меню</a></li>
+          <li><a href="#">Ігри</a></li>
+          <li><a href="#">Ваш гаманець</a></li>
+          <li><a href="auth.html">Авторизація</a></li>
+        </ul>
+      </nav>
     </header>
 
-    <!-- Основний контент -->
-    <div class="hero">
-        <h1>Ласкаво просимо до шкільної їдальні!</h1>
-        <p>
-            Вибирайте страви, заробляйте зірочки, проходьте тести та отримуйте найкращі страви!
-        </p>
-        <img src="https://borisstudio.com/wp-content/webp-express/webp-images/uploads/2023/08/xdizajn-kafe-i-restoranov-v-stile-loft-bannner.png.webp.pagespeed.ic.MCUtuzxGSk.webp" alt="">
-        <a href="./about.html" class="cta-button">Дізнатися більше</a>
-    </div>
+    <section class="hero">
+      <!-- Зображення для хедера -->
+      <img
+        src="https://optim.tildacdn.com/tild3564-6436-4134-a234-343636356162/-/resize/824x/-/format/webp/interier-restorana.jpg"
+        alt="Головне зображення"
+        class="hero-image"
+      />
+      <h1>Ласкаво просимо до шкільної їдальні!</h1>
+      <p>Виберіть смачні страви, заробляйте зірочки та отримуйте бонуси!</p>
+      <a href="./menu.html" class="cta-button">Переглянути меню</a>
+    </section>
 
-    <!-- Футер -->
+    
+
     <footer>
-        <div class="footer-info">
-            <p>&copy; 2024 Шкільна їдальня. Всі права захищені.</p>
-        </div>
+      <p>&copy; 2024 Шкільна їдальня. Всі права захищені.</p>
+      <div class="footer-links">
+        <a href="#">Політика конфіденційності</a>
+        <a href="#">Умови використання</a>
+        <a href="#">Контакти</a>
+      </div>
     </footer>
-
-    <script src="js/script.js"></script>
-</body>
-
+  </body>
 </html>
