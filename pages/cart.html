@@ -23,9 +23,15 @@
     }
 
     @keyframes gradientAnimation {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     header {
@@ -35,12 +41,6 @@
       top: 0;
       z-index: 100;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      transform: translateY(0);
-      transition: transform 0.3s ease;
-    }
-
-    header:hover {
-      transform: translateY(-5px);
     }
 
     header nav ul {
@@ -63,7 +63,7 @@
       padding: 10px 20px;
       border-radius: 5px;
       background-color: rgba(0, 0, 0, 0.3);
-      transition: color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
     header nav ul li a:hover {
@@ -82,8 +82,7 @@
       border-radius: 10px;
       background: rgba(0, 0, 0, 0.5);
       overflow-y: auto;
-      flex-grow: 1;
-      max-height: 70vh; /* Обмежує висоту */
+      max-height: 70vh;
     }
 
     .cart-container h1 {
@@ -102,11 +101,9 @@
       padding: 10px;
       background-color: rgba(255, 255, 255, 0.1);
       border-radius: 8px;
-      transition: transform 0.3s ease, background-color 0.3s ease;
     }
 
     .cart-item:hover {
-      transform: scale(1.05);
       background-color: rgba(255, 255, 255, 0.2);
     }
 
@@ -114,7 +111,6 @@
       width: 50px;
       height: 50px;
       border-radius: 5px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
     .cart-item div {
@@ -124,72 +120,40 @@
 
     .cart-item h3 {
       font-size: 18px;
-      margin: 0;
       color: #fff;
-      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
     }
 
     .cart-item p {
       font-size: 14px;
       color: #ffd700;
-      margin-top: 5px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     }
 
-    .btn-remove {
-      background-color: #ff6a6a;
+    .btn-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .btn {
+      background-color: #ff7a18;
       color: white;
-      padding: 6px 12px;
       border: none;
+      padding: 12px 20px;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 12px;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn-remove:hover {
-      background-color: #ff4d4d;
-    }
-
-    .cart-total {
-      text-align: center;
       font-size: 18px;
-      margin-top: 20px;
-      padding: 15px;
-      background-color: rgba(0, 0, 0, 0.6);
-      border-radius: 8px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     }
 
-    .cart-total p {
-      font-size: 20px;
-      color: #ffd700;
+    .btn:hover {
+      background-color: #ff6a18;
     }
 
     footer {
       background-color: rgba(0, 0, 0, 0.7);
-      padding: 15px;
+      padding: 20px;
       text-align: center;
       position: fixed;
       bottom: 0;
       width: 100%;
-      color: white;
-      transition: transform 0.3s ease;
-    }
-
-    .btn-add {
-      background-color: #66a6ff;
-      color: white;
-      padding: 10px 16px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn-add:hover {
-      background-color: #4a8bcb;
     }
   </style>
 </head>
@@ -199,94 +163,74 @@
     <nav>
       <ul>
         <li><a href="index.html">Початкова сторінка</a></li>
-        <li><a href="menu.html">Меню</a></li>
-        <li><a href="food.html">Їжа</a></li>
-        <li><a href="drink.html">Напої</a></li>
-        <li><a href="sweets.html">Солодощі</a></li>
+        <li><a href="drinks.html">Напої</a></li>
+        <li><a href="tests/index.html">Тести</a></li>
         <li><a href="cart.html">Кошик</a></li>
       </ul>
     </nav>
   </header>
 
   <div class="cart-container">
-    <h1>Ваш Кошик</h1>
-    <!-- Секція для товарів, доданих до кошика -->
-    <div id="cart-items">
-      <p>Ваш кошик порожній</p>
-    </div>
-
-    <div class="cart-total">
-      <p>Загальна сума: <span id="total-amount">0 грн</span></p>
-      <button class="btn-add" onclick="checkout()">Оформити замовлення</button>
+    <h1>Ваш кошик</h1>
+    <div id="cart-items"></div>
+    <div class="btn-container">
+      <button class="btn" onclick="clearCart()">Очистити кошик</button>
+      <button class="btn" onclick="placeOrder()">Оформити замовлення</button>
     </div>
   </div>
 
   <footer>
-    <p>&copy; 2024 Шкільна їдальня. Всі права захищені.</p>
+    <p>© 2024 Шкільна їдальня</p>
   </footer>
 
   <script>
-    // Ініціалізація кошика з localStorage
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    // Ініціалізація кошика
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    // Функція для додавання товару в кошик
-    function addItem(name, price, image) {
-      const item = { name, price, image };
-      cart.push(item);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      displayCart();
-    }
-
-    // Функція для відображення кошика на сторінці
+    // Функція для відображення товарів у кошику
     function displayCart() {
-      const cartItemsContainer = document.getElementById('cart-items');
-      const totalAmountElement = document.getElementById('total-amount');
+      const cartItemsContainer = document.getElementById("cart-items");
+      cartItemsContainer.innerHTML = ""; // Очистити попередній контент
 
       if (cart.length === 0) {
-        cartItemsContainer.innerHTML = "<p>Ваш кошик порожній</p>";
-        totalAmountElement.textContent = "0 грн";
-        return;
+        cartItemsContainer.innerHTML = "<p>Ваш кошик порожній.</p>";
+      } else {
+        cart.forEach(item => {
+          const cartItem = document.createElement("div");
+          cartItem.classList.add("cart-item");
+
+          cartItem.innerHTML = `
+            <img src="https://example.com/image1.jpg" alt="${item.item}">
+            <div>
+              <h3>${item.item}</h3>
+              <p>${item.price} грн</p>
+            </div>
+          `;
+          cartItemsContainer.appendChild(cartItem);
+        });
       }
-
-      cartItemsContainer.innerHTML = "";
-      let totalAmount = 0;
-
-      cart.forEach((item, index) => {
-        const itemElement = document.createElement('div');
-        itemElement.className = 'cart-item';
-
-        itemElement.innerHTML = `
-          <img src="${item.image}" alt="${item.name}" />
-          <div>
-            <h3>${item.name}</h3>
-            <p>${item.price} грн</p>
-          </div>
-          <button class="btn-remove" onclick="removeItem(${index})">Видалити</button>
-        `;
-
-        cartItemsContainer.appendChild(itemElement);
-        totalAmount += item.price;
-      });
-
-      totalAmountElement.textContent = `${totalAmount} грн`;
     }
 
-    // Функція для видалення товару з кошика
-    function removeItem(index) {
-      cart.splice(index, 1);
-      localStorage.setItem('cart', JSON.stringify(cart));
+    // Функція для очищення кошика
+    function clearCart() {
+      localStorage.removeItem("cart");
+      cart = [];
       displayCart();
     }
 
     // Функція для оформлення замовлення
-    function checkout() {
-      alert("Замовлення оформлено! Дякуємо за покупку.");
-      cart = [];
-      localStorage.setItem('cart', JSON.stringify(cart));
-      displayCart();
+    function placeOrder() {
+      if (cart.length === 0) {
+        alert("Ваш кошик порожній. Будь ласка, додайте товари для оформлення замовлення.");
+      } else {
+        alert("Ваше замовлення успішно оформлено! Дякуємо за покупку.");
+        localStorage.removeItem("cart");
+        cart = [];
+        displayCart();
+      }
     }
 
-    // Викликаємо функцію для відображення кошика
+    // Відображення кошика при завантаженні сторінки
     displayCart();
   </script>
 

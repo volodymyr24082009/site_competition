@@ -63,7 +63,7 @@
             width: 100%;
             padding: 12px;
             background-color: #007BFF;
-            color: white;
+            color:white;
             border: none;
             border-radius: 4px;
             font-size: 16px;
@@ -97,7 +97,7 @@
             background: linear-gradient(135deg, #00b4db, #0083b0);
             border: none;
             border-radius: 40px;
-            color: white;
+            color: green;
             font-size: 24px;
             cursor: pointer;
             transition: 0.3s;
@@ -112,7 +112,6 @@
             transform: scale(1.05);
         }
 
-        /* Для адаптивності на мобільних пристроях */
         @media (max-width: 600px) {
             .login-container {
                 width: 90%;
@@ -131,7 +130,6 @@
     <section class="login-container" id="auth-container">
         <h1>Реєстрація/Вхід до шкільної їдальні</h1>
         
-        <!-- Форма входу/реєстрації -->
         <form id="auth-form">
             <div class="input-group">
                 <label for="email">Електронна пошта</label>
@@ -149,60 +147,52 @@
         </div>
     </section>
 
-    
-
     <script>
-        // Перемикання між формою реєстрації та входу
-        const toggleAuth = document.getElementById("toggle-auth");
-        const submitBtn = document.getElementById("submit-btn");
         const authForm = document.getElementById("auth-form");
+        const submitBtn = document.getElementById("submit-btn");
         const authContainer = document.getElementById("auth-container");
+        const toggleAuth = document.getElementById("toggle-auth");
 
-        // Перемикання
         toggleAuth.addEventListener("click", () => {
             if (submitBtn.textContent === "Зареєструватися") {
                 submitBtn.textContent = "Увійти";
-                toggleAuth.textContent = "Ще не маєте акаунта? Реєстрація";
+                toggleAuth.textContent = "Не маєте акаунту? Зареєструватися";
             } else {
                 submitBtn.textContent = "Зареєструватися";
                 toggleAuth.textContent = "Маєте акаунт? Увійти";
             }
         });
 
-        // Обробка форми
         authForm.addEventListener("submit", (e) => {
             e.preventDefault();
 
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
 
-            // Реєстрація
             if (submitBtn.textContent === "Зареєструватися") {
-                // Збереження користувача в localStorage
-                localStorage.setItem("email", email);
-                localStorage.setItem("password", password);
+                if (email && password) {
+                    localStorage.setItem("email", email);
+                    localStorage.setItem("password", password);
 
-                alert("Вітаємо! Ви успішно зареєстровані!");
-                authContainer.innerHTML = "<h2>Реєстрація успішна! Тепер можете увійти.</h2>";
-                toggleAuth.style.display = "none"; // Сховати перемикач
+                    alert("Вітаємо! Ви успішно зареєстровані!");
+
+                    // Після реєстрації автоматичний перехід на головну сторінку
+                    window.location.href = 'index.html';  // Перехід на головну сторінку
+                } else {
+                    alert("Будь ласка, заповніть всі поля.");
+                }
             } else {
-                // Перевірка входу
                 const storedEmail = localStorage.getItem("email");
                 const storedPassword = localStorage.getItem("password");
 
                 if (email === storedEmail && password === storedPassword) {
                     alert("Вхід успішний!");
-                    goToCanteen();
+                    window.location.href = './pages/index.html';  // Перехід до їдальні
                 } else {
                     alert("Невірний логін або пароль!");
                 }
             }
         });
-
-        // Перехід на сайт їдальні
-        function goToCanteen() {
-            window.location.href = 'pages/index.html';
-        }
     </script>
 
 </body>

@@ -1,137 +1,141 @@
 <!DOCTYPE html>
 <html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ваш гаманець</title>
     <style>
-        body {
-            font-family: 'Orbitron', sans-serif;
-            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+      /* Стилі */
+      body {
+        font-family: "Orbitron", sans-serif;
+        background: linear-gradient(45deg, #6a11cb, #2575fc, #2ecc71);
+        color: white;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        box-sizing: border-box;
+      }
 
-        header {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 10px 0;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+      header {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px 0;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
 
-        .content {
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-        .wallet-box {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
-            animation: fadeInUp 1s ease-out;
-        }
+      nav ul li {
+        margin: 0 15px;
+      }
 
-        .wallet-box p {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
 
-        footer {
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+      nav ul li a:hover {
+        color: #ff9a9e;
+        transform: scale(1.1);
+        text-shadow: 0 0 8px #ff9a9e;
+      }
 
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        /* Стилі для хедера */
-header {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 20px 0;
-    position: fixed;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
+      .wallet-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+        text-align: center;
+      }
 
-/* Стилі для навігаційного меню */
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
+      .balance {
+        font-size: 2rem;
+        margin-bottom: 30px;
+      }
 
-nav ul li {
-    margin: 0 15px;
-}
+      .balance span {
+        font-weight: bold;
+      }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
+      /* Секція для зірочок */
+      .stars {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+      }
 
-nav ul li a:hover {
-    color: #00ffe7;
-    text-shadow: 0 0 12px #00ffe7;
-    transform: scale(1.1);
-}
+      /* Кнопка для оновлення */
+      button {
+        padding: 12px 25px;
+        background: linear-gradient(135deg, #ff6ec4, #7873f5);
+        border: none;
+        color: white;
+        font-size: 1.2rem;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s ease, background 0.3s ease;
+      }
 
+      button:hover {
+        transform: scale(1.1);
+        background: linear-gradient(135deg, #ff9d76, #7873f5);
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Ваш гаманець</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Початкова сторінка</a></li>
+          <li><a href="../menu.html">Меню</a></li>
+          <li><a href="wallet.html">Ваш гаманець</a></li>
+          <li><a href="tests/index.html">Тести</a></li>
+          <li><a href="../cart.html">🛒</a></li>
+        </ul>
+      </nav>
     </header>
-    <header>
-        <nav>
-            <ul>
-              <li><a href="#">Головна</a></li>
-              <li><a href="#">Меню</a></li>
-              <li><a href="#">Тести</a></li>
-              <li><a href="#">Контакти</a></li>
-            </ul>
-          </nav>
-      </header>
-    <div class="content">
-        <div class="wallet-box">
-            <p>Знижка: <span id="discount-message"></span></p>
-        </div>
+
+    
+
+      <div class="stars">
+        <p>Зірочки: <span id="wallet-stars">0</span></p>
+      </div>
+
+      <button onclick="updateWallet()">Оновити гаманець</button>
     </div>
-
-    <footer>
-        <p>&copy; 2024 Шкільна їдальня</p>
-    </footer>
-
-    <script>
-        // Отримуємо знижку з localStorage
-        const discountMessage = localStorage.getItem('discount') || 'Знижка не отримана.';
-        document.getElementById('discount-message').textContent = discountMessage;
-    </script>
-</body>
+    <div class="wallet-container">
+        <div class="balance">
+          <p>Ваш баланс: <span id="wallet-balance">0</span> грн</p>
+        </div>
+      
+        <button onclick="updateWallet()">Оновити гаманець</button>
+      </div>
+      
+      <script>
+        // Оновлення балансу
+        function updateWallet() {
+          const balance = parseInt(localStorage.getItem("balance") || "0");
+          document.getElementById("wallet-balance").textContent = balance;
+        }
+      
+        // Оновлення при завантаженні
+        window.onload = updateWallet;
+      </script>
+      
+    
+  </body>
 </html>

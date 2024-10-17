@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Їжа - Шкільна їдальня</title>
+  <title>Меню - Шкільна їдальня</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap" rel="stylesheet" />
   <style>
-    /* Загальні стилі */
     body {
       font-family: "Orbitron", sans-serif;
-      margin: 0;
-      padding: 0;
       background: linear-gradient(120deg, #ff9a9e 0%, #66a6ff 100%);
       color: white;
+      margin: 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
@@ -53,6 +52,11 @@
       color: #ff9a9e;
       transform: scale(1.1);
       text-shadow: 0 0 8px #ff9a9e;
+    }
+
+    .main-content {
+      padding: 20px;
+      text-align: center;
     }
 
     .menu-items {
@@ -131,6 +135,37 @@
       bottom: 0;
       width: 100%;
     }
+
+    .cart-button {
+      background-color: #ff9a9e;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .cart-button:hover {
+      background-color: #e67e22;
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      header nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header nav ul li {
+        margin: 5px 0;
+      }
+
+      .footer {
+        padding: 15px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -139,50 +174,57 @@
     <nav>
       <ul>
         <li><a href="index.html">Початкова сторінка</a></li>
-        <li><a href="menu.html">Головна</a></li>
-        <li><a href="food.html">Їжа</a></li>
-        <li><a href="drink.html">Напої</a></li>
-        <li><a href="sweets.html">Солодощі</a></li>
+        <li><a href="drinks.html">Напої</a></li>
+        <li><a href="tests/index.html">Тести</a></li>
+        <li><a href="cart.html" class="cart-button">🛒</a></li>
       </ul>
     </nav>
   </header>
 
   <div class="main-content">
-    <h1>Їжа</h1>
+    <h1>Товари</h1>
     <div class="menu-items">
-      <!-- Товари категорії "Їжа" -->
       <div class="menu-item">
-        <img src="https://example.com/food1.jpg" alt="Піца" />
-        <h2>Піца</h2>
-        <p>Маргарита, Пепероні</p>
+        <img src="https://example.com/image1.jpg" alt="Сендвіч 1" />
+        <h2>Сендвіч з куркою - 50 грн</h2>
+        <p>Смачна курка, сир, салат</p>
         <div class="btn-container">
-          <button class="btn" onclick="addToCart('Піца')">Додати до кошика</button>
+          <button class="btn" onclick="addToCart('Сендвіч з куркою', 50)">Додати до кошика</button>
         </div>
       </div>
       <div class="menu-item">
-        <img src="https://example.com/food2.jpg" alt="Сендвіч" />
-        <h2>Сендвіч</h2>
-        <p>З куркою, овочами</p>
+        <img src="https://example.com/image2.jpg" alt="Сендвіч 2" />
+        <h2>Сендвіч з тунцем - 55 грн</h2>
+        <p>Тунець, майонез, овочі</p>
         <div class="btn-container">
-          <button class="btn" onclick="addToCart('Сендвіч')">Додати до кошика</button>
+          <button class="btn" onclick="addToCart('Сендвіч з тунцем', 55)">Додати до кошика</button>
         </div>
       </div>
-      <!-- Додаткові пункти меню -->
     </div>
   </div>
 
   <footer>
-    <p>&copy; 2024 Шкільна їдальня. Всі права захищені.</p>
+    <p>© 2024 Шкільна їдальня</p>
   </footer>
 
   <script>
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    // Ініціалізація кошика
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    function addToCart(item) {
-      cart.push(item);
-      alert(item + ' додано до кошика!');
-      localStorage.setItem('cart', JSON.stringify(cart));
+    function addToCart(item, price) {
+      cart.push({ item, price });
+      localStorage.setItem("cart", JSON.stringify(cart));  // Зберігаємо кошик в localStorage
+      alert(`${item} додано до кошика`);
+      updateCart();  // Оновлюємо значок кошика
     }
+
+    // Оновлення значка кошика
+    function updateCart() {
+      const cartButton = document.querySelector('.cart-button');
+      cartButton.textContent = `🛒 (${cart.length})`;
+    }
+
+    updateCart();  // Оновлюємо кількість товарів при завантаженні сторінки
   </script>
 
 </body>

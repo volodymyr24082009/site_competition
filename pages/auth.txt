@@ -113,3 +113,94 @@
 
 </body>
 </html>
+
+
+
+
+
+body {
+  font-family: "Orbitron", sans-serif;
+  background: linear-gradient(45deg, #6a11cb, #2575fc, #2ecc71);
+  color: white;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+
+
+header {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px 0;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        width: 100%;
+      }
+      
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      nav ul li {
+        margin: 0 15px;
+      }
+      
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease, transform 0.3s ease;
+        font-size: 18px;
+      }
+      
+      nav ul li a:hover {
+        color: #ff9a9e;
+        transform: scale(1.1);
+        text-shadow: 0 0 8px #ff9a9e;
+      }
+      nav ul li a:hover {
+        color: #ff9a9e;
+        transform: scale(1.1);
+        text-shadow: 0 0 8px #ff9a9e;
+      }
+      .cart-button {
+        background-color: #ff9a9e;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        cursor: pointer;
+      }
+      
+      .cart-button:hover {
+        background-color: #e67e22;
+        transform: scale(1.1);
+      }
+      @media (max-width: 768px) {
+        nav ul {
+          flex-direction: column;
+          align-items: center;
+        }
+      
+        nav ul li {
+          margin: 5px 0;
+        }
+      
+        .footer {
+          padding: 15px;
+        }
+      }
+          

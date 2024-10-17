@@ -38,7 +38,8 @@
         padding: 0;
         margin: 0;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        align-items: center;
       }
 
       nav ul li {
@@ -73,7 +74,6 @@
         background-attachment: fixed; /* Фіксує фон при прокручуванні */
       }
 
-      /* Напівпрозорий фон для тексту */
       .hero h1, .hero p {
         position: relative;
         z-index: 10;
@@ -147,21 +147,15 @@
         background: #0056b3;
       }
 
-      /* Кнопка кошика */
+      /* Кнопка кошика в навігації */
       .cart-button {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
         background-color: #ff9a9e;
         color: white;
-        padding: 15px 25px;
+        padding: 10px 20px;
         font-size: 1.2rem;
-        border-radius: 50%;
+        border-radius: 5px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         transition: transform 0.3s ease, background-color 0.3s ease;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         cursor: pointer;
       }
 
@@ -266,10 +260,10 @@
       <nav>
         <ul>
           <li><a href="index.html">Початкова сторінка</a></li>
-          <li><a href="wallet.html">Ваш гаманець</a></li>
-          <li><a href="auth.html">Авторизація</a></li>
           <li><a href="menu.html">Меню</a></li>
-          <li><a href="cart.html">Кошик</a></li> <!-- Додано посилання на кошик -->
+          <li><a href="tests/index.html">Тести</a></li>
+          <li><a href="cart.html" class="cart-button">🛒</a></li>
+  
         </ul>
       </nav>
     </header>
@@ -277,13 +271,7 @@
     <section class="hero">
       <h1>Ласкаво просимо до шкільної їдальні!</h1>
       <p>Виберіть страви, заробляйте зірочки і насолоджуйтесь!</p>
-      <a href="menu.html" class="cta-button">Переглянути меню</a>
     </section>
-
-    <!-- Кнопка кошика -->
-    <div class="cart-button">
-      <span>🛒</span> <!-- Іконка кошика -->
-    </div>
 
     <footer>
       <p>&copy; 2024 Шкільна їдальня</p>
@@ -293,16 +281,5 @@
         <a href="./about.html">Про нас</a>
       </div>
     </footer>
-    <script>
- 
-      let cart = [];
-  
-      function addToCart(item) {
-        cart.push(item);
-        alert(item + ' додано до кошика!');
-        localStorage.setItem('cart', JSON.stringify(cart));
-      }
-  
-  </script>
   </body>
 </html>

@@ -8,10 +8,10 @@
   <style>
     body {
       font-family: "Orbitron", sans-serif;
-      margin: 0;
-      padding: 0;
       background: linear-gradient(120deg, #ff9a9e 0%, #66a6ff 100%);
       color: white;
+      margin: 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
@@ -78,9 +78,9 @@
     }
 
     .menu-item img {
-      width: 200px;  /* Фіксована ширина */
-      height: 200px; /* Фіксована висота */
-      object-fit: cover; /* Забезпечує відповідність пропорцій */
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
       border-radius: 10px;
       transition: transform 0.3s ease;
     }
@@ -153,11 +153,7 @@
       justify-content: space-between;
     }
 
-    .cart .item-name {
-      font-size: 18px;
-      color: white;
-    }
-
+    .cart .item-name,
     .cart .item-price {
       font-size: 18px;
       color: white;
@@ -182,6 +178,37 @@
       color: white;
       margin-top: 20px;
     }
+
+    .cart-button {
+      background-color: #ff9a9e;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .cart-button:hover {
+      background-color: #e67e22;
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      header nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header nav ul li {
+        margin: 5px 0;
+      }
+
+      .footer {
+        padding: 15px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -190,10 +217,9 @@
     <nav>
       <ul>
         <li><a href="index.html">Початкова сторінка</a></li>
-        <li><a href="menu.html">Головна</a></li>
-        <li><a href="food.html">Їжа</a></li>
-        <li><a href="drink.html">Напої</a></li>
-        <li><a href="sweets.html">Солодощі</a></li>
+        <li><a href="menu.html">Меню</a></li>
+        <li><a href="tests/index.html">Тести</a></li>
+        <li><a href="cart.html" class="cart-button">🛒</a></li>
       </ul>
     </nav>
   </header>
@@ -201,10 +227,9 @@
   <div class="main-content">
     <h1>Напої</h1>
     <div class="menu-items">
-      <!-- Товари категорії "Напої" -->
       <div class="menu-item">
         <img src="https://images.unian.net/photos/2024_05/thumb_files/1200_0_1715409555-3518.jpg" alt="Сік" />
-        <h2>Сік</h2>
+        <h2>Сік - 30 грн</h2>
         <p>Апельсиновий, яблучний</p>
         <div class="btn-container">
           <button class="btn" onclick="addToCart('Сік', 30)">Додати до кошика</button>
@@ -212,7 +237,7 @@
       </div>
       <div class="menu-item">
         <img src="https://ursamedia.com.ua/wp-content/uploads/2024/07/depositphotos_397236556_xl-scaled.jpg" alt="Кока-Кола" />
-        <h2>Кока-Кола</h2>
+        <h2>Кока-Кола - 40 грн</h2>
         <p>Газований напій</p>
         <div class="btn-container">
           <button class="btn" onclick="addToCart('Кока-Кола', 40)">Додати до кошика</button>
@@ -220,7 +245,7 @@
       </div>
       <div class="menu-item">
         <img src="https://www.opillia.com.ua/wp-content/uploads/2023/07/78dd8e0c-b3b2-4ec4-be09-fa96db10a487.jpeg" alt="Лимонад" />
-        <h2>Лимонад</h2>
+        <h2>Лимонад - 35 грн</h2>
         <p>Свіжий лимон, цукор</p>
         <div class="btn-container">
           <button class="btn" onclick="addToCart('Лимонад', 35)">Додати до кошика</button>
@@ -228,75 +253,41 @@
       </div>
       <div class="menu-item">
         <img src="https://molodo.com.ua/upload/resize_cache/webp/upload/medialibrary/dc2/mineral.webp" alt="Мінеральна вода" />
-        <h2>Мінеральна вода</h2>
+        <h2>Мінеральна вода - 25 грн</h2>
         <p>Без газу</p>
         <div class="btn-container">
           <button class="btn" onclick="addToCart('Мінеральна вода', 25)">Додати до кошика</button>
         </div>
       </div>
       <div class="menu-item">
-        <img src="https://mldc.vn.ua/wp-content/uploads/2023/07/46b7574eb65dad4952f044224cabf75d9281f22c.png" alt="Кава" />
-        <h2>Кава</h2>
-        <p>Молочна</p>
+        <img src="https://nutritionwarehouse.com.au/media/wysiwyg/nutrition_warehouse_products/chocolate_milk.jpg" alt="Шоколадне молоко" />
+        <h2>Шоколадне молоко - 45 грн</h2>
+        <p>Молочний напій</p>
         <div class="btn-container">
-          <button class="btn" onclick="addToCart('Кава', 45)">Додати до кошика</button>
+          <button class="btn" onclick="addToCart('Шоколадне молоко', 45)">Додати до кошика</button>
         </div>
       </div>
     </div>
   </div>
 
   <footer>
-    <p>&copy; 2024 Шкільна їдальня</p>
+    <p>© 2024 Шкільна їдальня</p>
   </footer>
 
-  <div class="cart">
-    <h2>Ваш Кошик</h2>
-    <ul id="cart-list"></ul>
-    <p id="total" class="total">Загальна сума: 0 грн</p>
-  </div>
-
   <script>
-    // Функція для додавання товару до кошика
+    let cart = [];
+
     function addToCart(item, price) {
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
       cart.push({ item, price });
-      localStorage.setItem('cart', JSON.stringify(cart));
       alert(`${item} додано до кошика`);
       updateCart();
     }
 
-    // Оновлення кошика
     function updateCart() {
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const cartList = document.getElementById('cart-list');
-      cartList.innerHTML = '';
-      let total = 0;
-
-      cart.forEach((product, index) => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-          <span class="item-name">${product.item}</span>
-          <span class="item-price">${product.price} грн</span>
-          <button class="remove-btn" onclick="removeFromCart(${index})">Видалити</button>
-        `;
-        cartList.appendChild(li);
-        total += product.price;
-      });
-
-      const totalElement = document.getElementById('total');
-      totalElement.innerHTML = `Загальна сума: ${total} грн`;
+      const cartButton = document.querySelector('.cart-button');
+      cartButton.textContent = `🛒 (${cart.length})`;
     }
-
-    // Видалення товару з кошика
-    function removeFromCart(index) {
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.splice(index, 1);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      updateCart();
-    }
-
-    // Ініціалізація кошика при завантаженні сторінки
-    window.onload = updateCart;
   </script>
+
 </body>
 </html>
