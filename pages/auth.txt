@@ -204,3 +204,223 @@ header {
         }
       }
           
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2017/03/09/11/27/pasta-2128191_960_720.jpg" alt="Паста з куркою" />
+        <h2>Паста з куркою - 60 грн</h2>
+        <p>Курка, паста, соус</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Паста з куркою', 60)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2018/06/21/13/52/pizza-3489249_960_720.jpg" alt="Піца" />
+        <h2>Піца з помідорами - 70 грн</h2>
+        <p>Піца, помідори, моцарела</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Піца з помідорами', 70)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2020/07/22/07/54/fruit-5420429_960_720.jpg" alt="Фрукти" />
+        <h2>Салат з фруктів - 45 грн</h2>
+        <p>Яблука, банани, ківі, апельсини</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Салат з фруктів', 45)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2016/12/14/21/51/sandwich-1903626_960_720.jpg" alt="Сендвіч з куркою" />
+        <h2>Сендвіч з куркою - 40 грн</h2>
+        <p>Курка, салат, майонез, хліб</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Сендвіч з куркою', 40)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2015/09/02/12/25/lasagna-918112_960_720.jpg" alt="Лазанья" />
+        <h2>Лазанья - 50 грн</h2>
+        <p>М'ясо, томатний соус, сир, паста</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Лазанья', 50)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2016/03/09/09/14/breakfast-1245805_960_720.jpg" alt="Сніданок" />
+        <h2>Сніданок - 25 грн</h2>
+        <p>Яйця, бекон, тости</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Сніданок', 25)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2015/08/28/14/28/juice-914115_960_720.jpg" alt="Сік" />
+        <h2>Оранжевий сік - 15 грн</h2>
+        <p>Сік апельсиновий</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Оранжевий сік', 15)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2017/06/12/13/30/salad-2395889_960_720.jpg" alt="Овочевий салат" />
+        <h2>Овочевий салат - 30 грн</h2>
+        <p>Огірки, помідори, перець</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Овочевий салат', 30)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2020/06/22/06/46/food-5339486_960_720.jpg" alt="Картопля фрі" />
+        <h2>Картопля фрі - 25 грн</h2>
+        <p>Смажена картопля</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Картопля фрі', 25)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <!-- Додаткові 15 товарів -->
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2017/07/29/21/16/steak-2556751_960_720.jpg" alt="Стейк" />
+        <h2>Стейк з яловичини - 95 грн</h2>
+        <p>Соковитий стейк з яловичини</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Стейк з яловичини', 95)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2016/10/20/13/43/burger-1758620_960_720.jpg" alt="Бургер" />
+        <h2>Бургер - 45 грн</h2>
+        <p>М'ясо, салат, соус</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Бургер', 45)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2017/03/01/21/32/fruit-2101574_960_720.jpg" alt="Смузі" />
+        <h2>Смузі - 20 грн</h2>
+        <p>Полуниця, банан, йогурт</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Смузі', 20)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2020/06/01/14/23/chicken-5249475_960_720.jpg" alt="Курка гриль" />
+        <h2>Курка гриль - 75 грн</h2>
+        <p>Курка, запечена до хрусткої скоринки</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Курка гриль', 75)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2020/08/06/12/45/steak-5462947_960_720.jpg" alt="Рибний стейк" />
+        <h2>Рибний стейк - 85 грн</h2>
+        <p>Риба, спеції, запечена на грилі</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Рибний стейк', 85)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2020/08/07/00/28/bread-5475606_960_720.jpg" alt="Хліб з оливками" />
+        <h2>Хліб з оливками - 30 грн</h2>
+        <p>Оливки, пшеничний хліб</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Хліб з оливками', 30)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2016/03/27/21/03/pasta-1282251_960_720.jpg" alt="Паста" />
+        <h2>Паста карбонара - 55 грн</h2>
+        <p>Паста, соус карбонара, бекон</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Паста карбонара', 55)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2016/07/07/10/57/pizza-1503707_960_720.jpg" alt="Піца з грибами" />
+        <h2>Піца з грибами - 65 грн</h2>
+        <p>Піца, гриби, моцарела</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Піца з грибами', 65)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2016/04/29/18/58/food-1408035_960_720.jpg" alt="Суп" />
+        <h2>Гороховий суп - 30 грн</h2>
+        <p>Горох, морква, картопля</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Гороховий суп', 30)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2015/06/23/15/16/strawberries-818315_960_720.jpg" alt="Полуничний десерт" />
+        <h2>Полуничний десерт - 40 грн</h2>
+        <p>Полуниця, крем, бісквіт</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Полуничний десерт', 40)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2017/07/01/14/37/juice-2462556_960_720.jpg" alt="Молочний коктейль" />
+        <h2>Молочний коктейль - 25 грн</h2>
+        <p>Молоко, ваніль, шоколад</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Молочний коктейль', 25)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2015/05/31/16/55/grapes-792245_960_720.jpg" alt="Виноград" />
+        <h2>Виноград - 20 грн</h2>
+        <p>Світлий виноград</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Виноград', 20)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2020/07/16/10/50/soup-5416181_960_720.jpg" alt="Том Ям" />
+        <h2>Суп Том Ям - 50 грн</h2>
+        <p>Гострий тайський суп</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Суп Том Ям', 50)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2018/02/24/16/28/fruit-3174243_960_720.jpg" alt="Фрукти" />
+        <h2>Салат з фруктів - 40 грн</h2>
+        <p>Фрукти сезонні</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Салат з фруктів', 40)">Додати до кошика</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://cdn.pixabay.com/photo/2019/10/29/07/11/pizza-4596829_960_720.jpg" alt="Піца" />
+        <h2>Піца Маргарита - 60 грн</h2>
+        <p>Томат, моцарела, базилік</p>
+        <div class="btn-container">
+          <button class="btn" onclick="addToCart('Піца Маргарита', 60)">Додати до кошика</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div

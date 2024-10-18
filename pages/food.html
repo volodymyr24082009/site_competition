@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Меню - Шкільна їдальня</title>
+  <title>Шкільна їдальня</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -56,63 +56,40 @@
 
     .main-content {
       padding: 20px;
-      text-align: center;
-    }
-
-    .menu-items {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       justify-items: center;
-      padding: 20px;
-      overflow: auto;
-      transition: padding 0.3s ease;
     }
 
     .menu-item {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.6);
       border-radius: 10px;
-      text-align: center;
-      transition: transform 0.3s, background-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .menu-item img {
+      padding: 20px;
       width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
+      text-align: center;
       transition: transform 0.3s ease;
     }
 
-    .menu-item:hover {
-      transform: scale(1.05);
-      background-color: #ff9a9e;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    .menu-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
     }
 
-    .menu-item:hover img {
-      transform: scale(1.1);
-    }
-
-    .menu-item h2 {
-      font-size: 16px;
-      margin: 10px 0;
+    .menu-item h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
     }
 
     .menu-item p {
-      font-size: 14px;
+      margin: 0 0 15px;
+      font-size: 16px;
     }
 
-    .btn-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .btn {
+    .menu-item .btn {
       background-color: #ff9a9e;
       color: white;
       border: none;
@@ -123,8 +100,12 @@
       font-size: 16px;
     }
 
-    .btn:hover {
+    .menu-item .btn:hover {
       background-color: #ff6a6a;
+    }
+
+    .menu-item:hover {
+      transform: scale(1.05);
     }
 
     footer {
@@ -135,71 +116,107 @@
       bottom: 0;
       width: 100%;
     }
-
-    .cart-button {
-      background-color: #ff9a9e;
-      color: white;
-      padding: 10px 20px;
-      font-size: 1.2rem;
-      border-radius: 5px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      cursor: pointer;
-    }
-
-    .cart-button:hover {
-      background-color: #e67e22;
-      transform: scale(1.1);
-    }
-
-    @media (max-width: 768px) {
-      header nav ul {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      header nav ul li {
-        margin: 5px 0;
-      }
-
-      .footer {
-        padding: 15px;
-      }
-    }
   </style>
 </head>
 <body>
-
   <header>
     <nav>
       <ul>
-        <li><a href="index.html">Початкова сторінка</a></li>
-        <li><a href="drinks.html">Напої</a></li>
-        <li><a href="tests/index.html">Тести</a></li>
-        <li><a href="cart.html" class="cart-button">🛒</a></li>
+        <li><a href="/pages/index.html">Початкова сторінка</a></li>
+        <li><a href="/pages/menu.html">Меню</a></li>
+        <li><a href="/tests/tests/tests/tests.html">Тести</a></li>
+        <li><a href="/tests/tests/tests/wallet.html" class="cart-button">Гаманець</a></li>
+        <li><a href="/pages/cart.html" class="cart-button">🛒</a></li>
       </ul>
     </nav>
   </header>
 
   <div class="main-content">
-    <h1>Товари</h1>
-    <div class="menu-items">
-      <div class="menu-item">
-        <img src="https://example.com/image1.jpg" alt="Сендвіч 1" />
-        <h2>Сендвіч з куркою - 50 грн</h2>
-        <p>Смачна курка, сир, салат</p>
-        <div class="btn-container">
-          <button class="btn" onclick="addToCart('Сендвіч з куркою', 50)">Додати до кошика</button>
-        </div>
-      </div>
-      <div class="menu-item">
-        <img src="https://example.com/image2.jpg" alt="Сендвіч 2" />
-        <h2>Сендвіч з тунцем - 55 грн</h2>
-        <p>Тунець, майонез, овочі</p>
-        <div class="btn-container">
-          <button class="btn" onclick="addToCart('Сендвіч з тунцем', 55)">Додати до кошика</button>
-        </div>
-      </div>
+    <h1>Меню</h1>
+    <!-- Товари -->
+    <div class="menu-item">
+      <img src="https://via.placeholder.com/150" alt="Сендвіч 1">
+      <h3>Сендвіч 1</h3>
+      <p>20 грн</p>
+      <button class="btn" onclick="addToCart('Сендвіч 1', 20)">Додати до кошика</button>
+    </div>
+    <div class="menu-item">
+      <img src="https://via.placeholder.com/150" alt="Сендвіч 2">
+      <h3>Сендвіч 2</h3>
+      <p>25 грн</p>
+      <button class="btn" onclick="addToCart('Сендвіч 2', 25)">Додати до кошика</button>
+    </div>
+    <div class="menu-item">
+      <img src="https://via.placeholder.com/150" alt="Котлета">
+      <h3>Котлета</h3>
+      <p>30 грн</p>
+      <button class="btn" onclick="addToCart('Котлета', 30)">Додати до кошика</button>
+    </div>
+    <div class="menu-item">
+      <img src="https://via.placeholder.com/150" alt="Піцца 1">
+      <h3>Піцца 1</h3>
+      <p>50 грн</p>
+      <button class="btn" onclick="addToCart('Піцца 1', 50)">Додати до кошика</button>
+    </div>
+    <div class="menu-item">
+      <img src="https://via.placeholder.com/150" alt="Піцца 2">
+      <h3>Піцца 2</h3>
+      <p>55 грн</p>
+      <button class="btn" onclick="addToCart('Піцца 2', 55)">Додати до кошика</button>
+    </div>
+    <div class="menu-item">
+      <img src="https://via.placeholder.com/150" alt="Суп">
+      <h3>Суп</h3>
+      <p>15 грн</p>
+      <button class="btn" onclick="addToCart('Суп', 15)">Додати до кошика</button>
+    </div>
+    <div class="menu-item">
+      <img src="https://via.placeholder.com/150" alt="Салат">
+      <h3>Салат</h3>
+      <p>12 грн</p>
+      <button class="btn" onclick="addToCart('Салат', 12)">Додати до кошика</button>
+    </div>
+    <div class="menu-item">
+      <img src="https://via.placeholder.com/150" alt="Чизбургер">
+      <h3>Чизбургер</h3>
+      <p>35 грн</p>
+      <button class="btn" onclick="addToCart('Чизбургер', 35)">Додати до кошика</button>
+    </div>
+    <div class="menu-item">
+      <img src="https://via.placeholder.com/150" alt="Гамбургер">
+      <h3>Гамбургер</h3>
+      <p>30 грн</p>
+      <button class="btn" onclick="addToCart('Гамбургер', 30)">Додати до кошика</button>
+    </div>
+    <div class="menu-item">
+      <img src="https://via.placeholder.com/150" alt="Паста 1">
+      <h3>Паста 1</h3>
+      <p>40 грн</p>
+      <button class="btn" onclick="addToCart('Паста 1', 40)">Додати до кошика</button>
+    </div>
+    <div class="menu-item">
+      <img src="https://via.placeholder.com/150" alt="Паста 2">
+      <h3>Паста 2</h3>
+      <p>45 грн</p>
+      <button class="btn" onclick="addToCart('Паста 2', 45)">Додати до кошика</button>
+    </div>
+    <div class="menu-item">
+      <img src="https://via.placeholder.com/150" alt="Бургер">
+      <h3>Бургер</h3>
+      <p>50 грн</p>
+      <button class="btn" onclick="addToCart('Бургер', 50)">Додати до кошика</button>
+    </div>
+    <div class="menu-item">
+      <img src="https://via.placeholder.com/150" alt="Курячий нагетс">
+      <h3>Курячий нагетс</h3>
+      <p>20 грн</p>
+      <button class="btn" onclick="addToCart('Курячий нагетс', 20)">Додати до кошика</button>
+    </div>
+    <div class="menu-item">
+      <img src="https://via.placeholder.com/150" alt="Омлет">
+      <h3>Омлет</h3>
+      <p>18 грн</p>
+      <button class="btn" onclick="addToCart('Омлет', 18)">Додати до кошика</button>
     </div>
   </div>
 
@@ -208,24 +225,13 @@
   </footer>
 
   <script>
-    // Ініціалізація кошика
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    function addToCart(item, price) {
-      cart.push({ item, price });
-      localStorage.setItem("cart", JSON.stringify(cart));  // Зберігаємо кошик в localStorage
-      alert(`${item} додано до кошика`);
-      updateCart();  // Оновлюємо значок кошика
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${name} додано до кошика!`);
     }
-
-    // Оновлення значка кошика
-    function updateCart() {
-      const cartButton = document.querySelector('.cart-button');
-      cartButton.textContent = `🛒 (${cart.length})`;
-    }
-
-    updateCart();  // Оновлюємо кількість товарів при завантаженні сторінки
   </script>
-
 </body>
 </html>

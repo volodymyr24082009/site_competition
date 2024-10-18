@@ -23,14 +23,12 @@
       }
 
       header {
-        background: rgba(0, 0, 0, 0.7);
-        padding: 15px 0;
-        text-align: center;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
         position: sticky;
         top: 0;
         z-index: 100;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        width: 100%;
       }
 
       nav ul {
@@ -61,7 +59,8 @@
       }
 
       .hero {
-        background: url("https://optim.tildacdn.com/tild3564-6436-4134-a234-343636356162/-/resize/824x/-/format/webp/interier-restorana.jpg") no-repeat center center;
+        background: url("https://optim.tildacdn.com/tild3564-6436-4134-a234-343636356162/-/resize/824x/-/format/webp/interier-restorana.jpg")
+          no-repeat center center;
         background-size: cover;
         height: 70vh;
         display: flex;
@@ -74,13 +73,14 @@
         background-attachment: fixed; /* Фіксує фон при прокручуванні */
       }
 
-      .hero h1, .hero p {
+      .hero h1,
+      .hero p {
         position: relative;
         z-index: 10;
       }
 
       .hero::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
@@ -259,11 +259,11 @@
     <header>
       <nav>
         <ul>
-          <li><a href="index.html">Початкова сторінка</a></li>
-          <li><a href="menu.html">Меню</a></li>
-          <li><a href="tests/index.html">Тести</a></li>
-          <li><a href="cart.html" class="cart-button">🛒</a></li>
-  
+          <li><a href="/pages/index.html">Початкова сторінка</a></li>
+          <li><a href="/pages/menu.html">Меню</a></li>
+          <li><a href="/tests/tests/tests/tests.html">Тести</a></li>
+          <li><a href="/tests/tests/tests/wallet.html" class="cart-button">Гаманець</a></li>
+          <li><a href="/pages/cart.html" class="cart-button">🛒</a></li>
         </ul>
       </nav>
     </header>

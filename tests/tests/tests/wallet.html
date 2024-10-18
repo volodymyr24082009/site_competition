@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Гаманець</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    /* Ваші стилі */
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(45deg, #6a11cb, #2575fc, #2ecc71);
+      color: white;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease, transform 0.3s ease;
+      font-size: 18px;
+    }
+
+    nav ul li a:hover {
+      color: #ff9a9e;
+      transform: scale(1.1);
+      text-shadow: 0 0 8px #ff9a9e;
+    }
+
+    .content {
+      padding: 50px 20px;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .discount-info {
+      font-size: 1.5rem;
+      margin-top: 20px;
+    }
+
+    .return-home {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 30px;
+      background-color: #f39c12;
+      color: white;
+      font-size: 1.2rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/pages/index.html">Початкова сторінка</a></li>
+        <li><a href="/pages/menu.html">Меню</a></li>
+        <li><a href="/tests/tests/tests/tests.html">Тести</a></li>
+        <li><a href="/tests/tests/tests/wallet.html" class="cart-button">Гаманець</a></li>
+        <li><a href="/pages/cart.html" class="cart-button">🛒</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <h1>Ваш гаманець</h1>
+    <div class="discount-info">
+      <p>Ваша сума: <span id="discount">0</span> грн</p>
+    </div>
+    <button class="return-home" onclick="window.location.href='index.html'">Повернутися додому</button>
+  </div>
+
+  <script>
+    // Завантажуємо поточну суму з локального сховища або 0, якщо вона не існує
+    let currentDiscount = parseFloat(localStorage.getItem('discount')) || 0;
+
+    // Перевіряємо, чи є результат тесту для додавання
+    const correctAnswers = localStorage.getItem('correctAnswers');
+    if (correctAnswers) {
+      // Якщо є результат, додаємо гроші за правильні відповіді (по 10 грн за кожну)
+      currentDiscount += correctAnswers * 10;
+      // Оновлюємо локальне сховище з новим балансом
+      localStorage.setItem('discount', currentDiscount);
+      // Очищаємо збережену кількість правильних відповідей, щоб уникнути подвійного зарахування
+      localStorage.removeItem('correctAnswers');
+    }
+
+    // Оновлюємо відображену суму
+    document.getElementById('discount').textContent = currentDiscount + ' грн';
+  </script>
+</body>
+</html>

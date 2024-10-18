@@ -216,10 +216,11 @@
   <header>
     <nav>
       <ul>
-        <li><a href="index.html">Початкова сторінка</a></li>
-        <li><a href="menu.html">Меню</a></li>
-        <li><a href="tests/index.html">Тести</a></li>
-        <li><a href="cart.html" class="cart-button">🛒</a></li>
+        <li><a href="/pages/index.html">Початкова сторінка</a></li>
+        <li><a href="/pages/menu.html">Меню</a></li>
+        <li><a href="/tests/tests/tests/tests.html">Тести</a></li>
+        <li><a href="/tests/tests/tests/wallet.html" class="cart-button">Гаманець</a></li>
+        <li><a href="/pages/cart.html" class="cart-button">🛒</a></li>
       </ul>
     </nav>
   </header>
@@ -259,35 +260,52 @@
           <button class="btn" onclick="addToCart('Мінеральна вода', 25)">Додати до кошика</button>
         </div>
       </div>
-      <div class="menu-item">
-        <img src="https://nutritionwarehouse.com.au/media/wysiwyg/nutrition_warehouse_products/chocolate_milk.jpg" alt="Шоколадне молоко" />
-        <h2>Шоколадне молоко - 45 грн</h2>
-        <p>Молочний напій</p>
-        <div class="btn-container">
-          <button class="btn" onclick="addToCart('Шоколадне молоко', 45)">Додати до кошика</button>
-        </div>
-      </div>
     </div>
   </div>
 
   <footer>
-    <p>© 2024 Шкільна їдальня</p>
+    <p>© 2024 Шкільна їдальня. Всі права захищені.</p>
   </footer>
 
   <script>
     let cart = [];
 
-    function addToCart(item, price) {
-      cart.push({ item, price });
-      alert(`${item} додано до кошика`);
+    function addToCart(name, price) {
+      const item = { name, price };
+      cart.push(item);
+      alert(`${name} додано до кошика!`);
       updateCart();
     }
 
     function updateCart() {
-      const cartButton = document.querySelector('.cart-button');
-      cartButton.textContent = `🛒 (${cart.length})`;
+      let cartContainer = document.querySelector('.cart ul');
+      if (!cartContainer) {
+        cartContainer = document.createElement('ul');
+        document.querySelector('.cart').appendChild(cartContainer);
+      }
+
+      cartContainer.innerHTML = '';
+      let total = 0;
+      cart.forEach(item => {
+        const cartItem = document.createElement('li');
+        cartItem.innerHTML = `<span class="item-name">${item.name}</span><span class="item-price">${item.price} грн</span><button class="remove-btn" onclick="removeFromCart('${item.name}')">Видалити</button>`;
+        cartContainer.appendChild(cartItem);
+        total += item.price;
+      });
+
+      const totalElement = document.querySelector('.total');
+      if (totalElement) totalElement.remove();
+      
+      const totalElementNew = document.createElement('p');
+      totalElementNew.classList.add('total');
+      totalElementNew.textContent = `Загальна сума: ${total} грн`;
+      cartContainer.appendChild(totalElementNew);
+    }
+
+    function removeFromCart(name) {
+      cart = cart.filter(item => item.name !== name);
+      updateCart();
     }
   </script>
-
 </body>
 </html>
