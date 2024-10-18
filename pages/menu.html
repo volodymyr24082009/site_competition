@@ -144,6 +144,23 @@
       background-color: #ff7a8e;
       transform: scale(1.1);
     }
+    header {
+        background-color: #000; /* Непрозорий чорний колір */
+        padding: 20px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        
+      }
+      footer {
+        background-color: #000; /* Непрозорий чорний колір */
+        padding: 20px;
+        text-align: center;
+        position: relative;
+        width: 100%;
+        bottom: 0;
+      }
   </style>
 </head>
 <body>
@@ -164,14 +181,17 @@
     <p>Оберіть категорію товарів:</p>
     <div class="category-buttons">
       <a href="./food.html" class="category-button">Їжа</a>
-      <a href="./drink.html" class="category-button">Напої</a>
     </div>
   </div>
 
   <!-- Футер -->
-  <div class="footer">
-    © 2024 Шкільна їдальня. Всі права захищені.
-  </div>
-
+  <footer>
+    <p>&copy; 2024 Шкільна їдальня</p>
+    <div class="footer-links">
+      <a href="./contacts.html">Контакти</a>
+      <a href="./privacy-policy.html">Політика конфіденційності</a>
+      <a href="./about.html">Про нас</a>
+    </div>
+  </footer>
 </body>
 </html>

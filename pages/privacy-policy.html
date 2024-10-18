@@ -185,7 +185,23 @@
                     padding: 15px;
                   }
                 }
-                    
+                header {
+        background-color: #000; /* Непрозорий чорний колір */
+        padding: 20px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        
+      }
+      footer {
+        background-color: #000; /* Непрозорий чорний колір */
+        padding: 20px;
+        text-align: center;
+        position: relative;
+        width: 100%;
+        bottom: 0;
+      }  
     </style>
 </head>
 
@@ -243,9 +259,12 @@
     </main>
 
     <footer>
-        <div class="footer-info">
-            <p>&copy; 2024 Шкільна їдальня. Всі права захищені.</p>
-        </div>
+      <p>&copy; 2024 Шкільна їдальня</p>
+      <div class="footer-links">
+        <a href="./contacts.html">Контакти</a>
+        <a href="./privacy-policy.html">Політика конфіденційності</a>
+        <a href="./about.html">Про нас</a>
+      </div>
     </footer>
 </body>
 

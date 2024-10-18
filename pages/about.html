@@ -5,204 +5,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Про нас - Шкільна їдальня</title>
     <style>
-        body {
-            font-family: "Orbitron", sans-serif;
-            background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
-            margin: 0;
-            padding: 0;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            overflow-x: hidden; /* Додано, щоб уникнути горизонтального скролу */
-          }
-          
-          header {
-            background-color: #2a2a72;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            animation: slideIn 0.8s ease-out;
-            width: 100%;
-          }
-          
-          nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            padding: 0;
-            margin: 0;
-          }
-          
-          nav ul li {
-            margin: 0 15px;
-          }
-          
-          nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            padding: 5px 10px;
-            transition: color 0.3s ease, transform 0.3s ease;
-            border: 2px solid #fff; /* Додано рамку */
-          }
-          
-          nav ul li a:hover {
-            color: #ffcc00;
-            transform: scale(1.1);
-            text-shadow: 0 0 8px #ff9a9e;
-            border: 2px solid #ffcc00; /* Зміна кольору рамки при наведенні */
-          }
-          
-          /* Стилі для секції "Про нас" */
-          .about-section {
-            text-align: center;
-            padding: 80px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            margin: 50px auto;
-            max-width: 800px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            animation: fadeInUp 1s ease-out;
-          }
-          
-          .about-section h1 {
-            font-size: 3.5em;
-            text-shadow: 0 0 10px #fff, 0 0 20px #66a6ff;
-            margin-bottom: 20px;
-          }
-          
-          .about-section p {
-            font-size: 1.4em;
-            line-height: 1.6;
-            color: #f0f0f0;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-          }
-          
-          /* Універсальний стиль для кнопок */
-          button,
-          .btn-home,
-          .cart-button {
-            background-color: transparent; /* Прозорий фон */
-            color: white;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 5px;
-            border: 2px solid #ffffff; /* Біла рамка для кнопок */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-          }
-          
-          button:hover,
-          .btn-home:hover,
-          .cart-button:hover {
-            background-color: rgba(255, 255, 255, 0.1); /* Легкий фон при наведенні */
-            transform: scale(1.1); /* Збільшення кнопки при наведенні */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Збільшення тіні при наведенні */
-          }
-          
-          .btn-home {
-            background-color: transparent; /* Прозорий фон */
-            color: #ffcc00; /* Зміна кольору тексту */
-          }
-          
-          .btn-home:hover {
-            background-color: rgba(255, 204, 0, 0.1); /* Легкий фон при наведенні */
-            color: #ffcc00;
-          }
-          
-          /* Адаптивні стилі для мобільних пристроїв */
-          @media (max-width: 768px) {
-            .about-section h1 {
-              font-size: 2.5em;
-            }
-          
-            .about-section p {
-              font-size: 1.2em;
-            }
-          
-            nav ul {
-              flex-direction: column;
-              padding: 0;
-            }
-          
-            nav ul li {
-              margin: 10px 0;
-            }
-          
-            nav ul li a {
-              font-size: 16px;
-            }
-          }
-          
-          /* Анімація для елементів */
-          @keyframes slideIn {
-            from {
-              transform: translateY(-100%);
-            }
-            to {
-              transform: translateY(0);
-            }
-          }
-          
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(50px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-          
-          /* Відступи для основного контенту */
-          main {
-            margin-top: 120px; /* Відступ для контенту після хедера */
-            flex: 1; /* Забезпечує, щоб основний контент займав весь доступний простір */
-          }
-          
-          /* Стилі для конкретної кнопки "Повернутися на головну" */
-          .cart-button {
-            background-color: transparent; /* Зробити фон прозорим */
-            color: white;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            cursor: pointer;
-            border: 2px solid white; /* Якщо хочете додати обвідку */
-          }
-          
-          .cart-button:hover {
-            background-color: transparent; /* Виглядає прозорою при наведенні */
-            color: #ff9a9e; /* Зміна кольору тексту при наведенні */
-            transform: scale(1.1);
-          }
-          
-          @media (max-width: 768px) {
-            nav ul {
-              flex-direction: column;
-              align-items: center;
-            }
-          
-            nav ul li {
-              margin: 5px 0;
-            }
-          
-            .footer {
-              padding: 15px;
-            }
-          }
-          
+     body {
+    font-family: "Orbitron", sans-serif;
+    background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+    margin: 0;
+    padding: 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: #000; /* Непрозорий чорний колір */
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+    background-color: #000; /* Непрозорий чорний колір */
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    /* ЗРОБЛЕНО: прибрано border */
+}
+
+nav ul li a:hover {
+    color: #ffcc00;
+    transform: scale(1.1);
+    text-shadow: 0 0 8px #ff9a9e;
+}
+
+.about-section {
+    text-align: center;
+    padding: 80px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    margin: 50px auto;
+    max-width: 800px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 1s ease-out;
+}
+
+.about-section h1 {
+    font-size: 3.5em;
+    text-shadow: 0 0 10px #fff, 0 0 20px #66a6ff;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    font-size: 1.4em;
+    line-height: 1.6;
+    color: #f0f0f0;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+button,
+.btn-home,
+.cart-button {
+    background-color: transparent;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    /* ЗРОБЛЕНО: прибрано border */
+}
+
+button:hover,
+.btn-home:hover,
+.cart-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.btn-home {
+    background-color: transparent;
+    color: #ffcc00;
+}
+
+.btn-home:hover {
+    background-color: rgba(255, 204, 0, 0.1);
+    color: #ffcc00;
+}
+
+@media (max-width: 768px) {
+    .about-section h1 {
+        font-size: 2.5em;
+    }
+
+    .about-section p {
+        font-size: 1.2em;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+
+    .footer {
+        padding: 15px;
+    }
+}
+
     </style>
   </head>
   <body>
@@ -212,12 +156,14 @@
           <li><a href="../pages/index.html">Початкова сторінка</a></li>
           <li><a href="../pages/menu.html">Меню</a></li>
           <li><a href="../tests/tests.html">Тести</a></li>
-          <li><a href="../tests/wallet.html" class="cart-button">Гаманець</a></li>
+          <li>
+            <a href="../tests/wallet.html" class="cart-button">Гаманець</a>
+          </li>
           <li><a href="../pages/cart.html" class="cart-button">🛒</a></li>
         </ul>
       </nav>
     </header>
-  
+
     <main>
       <section class="about-section">
         <h1>Про нашу шкільну їдальню</h1>
@@ -230,8 +176,11 @@
     </main>
 
     <footer>
-      <div class="footer-info">
-        <p>&copy; 2024 Шкільна їдальня. Всі права захищені.</p>
+      <p>&copy; 2024 Шкільна їдальня</p>
+      <div class="footer-links">
+        <a href="./contacts.html">Контакти</a>
+        <a href="./privacy-policy.html">Політика конфіденційності</a>
+        <a href="./about.html">Про нас</a>
       </div>
     </footer>
   </body>
