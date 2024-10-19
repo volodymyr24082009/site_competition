@@ -6,161 +6,159 @@
   <title>Меню шкільної їдальні</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    /* Загальні стилі для тіла */
-    body {
-      font-family: "Orbitron", sans-serif;
-      background: linear-gradient(45deg, #6a11cb, #2575fc, #2ecc71);
-      color: white;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      min-height: 100vh;
-      text-align: center;
-      flex-direction: column;
-    }
+/* Загальні стилі для тіла */
+body {
+  font-family: "Orbitron", sans-serif;
+  background: linear-gradient(45deg, #6a11cb, #2575fc, #2ecc71);
+  color: white;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  flex-direction: column;
+}
 
-    /* Стиль для хедера (навігація) */
-    header {
-      background-color: rgba(0, 31, 63, 0.9);
-      padding: 10px 0;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    }
+/* Стиль для хедера (навігація) */
+header {
+  background-color: rgba(0, 31, 63, 0.9);
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
-    /* Стилі для навігації */
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: space-between; /* Зміст на всю ширину */
-      width: 100%; /* Ширина 100% */
-      text-align: center;
-    }
+/* Стилі для навігації */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between; /* Зміст на всю ширину */
+  width: 100%; /* Ширина 100% */
+  text-align: center;
+}
 
-    nav ul li {
-      margin: 0 15px;
-    }
+nav ul li {
+  margin: 0 15px;
+}
 
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
-      font-size: 18px;
-    }
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+  font-size: 18px;
+}
 
-    nav ul li a:hover {
-      color: #ff9a9e;
-      transform: scale(1.1);
-      text-shadow: 0 0 8px #ff9a9e;
-    }
+nav ul li a:hover {
+  color: #ff9a9e;
+  transform: scale(1.1);
+  text-shadow: 0 0 8px #ff9a9e;
+}
 
-    /* Стилі для контейнера контенту */
-    .content-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      flex-grow: 1;
-      margin-top: 10px;
-    }
+/* Стилі для контейнера контенту */
+.content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-grow: 1;
+  margin-top: 10px;
+}
 
-    .content-container h2 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-      color: #fff;
-    }
+.content-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
 
-    /* Стилі для кнопок категорій */
-    .category-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
+/* Стилі для кнопок категорій */
+.category-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
 
-    .category-button {
-      background: linear-gradient(135deg, #f1c40f, #e67e22);
-      color: black;
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background 0.3s ease, transform 0.3s ease;
-      cursor: pointer;
-    }
+.category-button {
+  background: linear-gradient(135deg, #f1c40f, #e67e22);
+  color: black;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
 
-    .category-button:hover {
-      background: linear-gradient(135deg, #e67e22, #f1c40f);
-      transform: scale(1.1);
-    }
+.category-button:hover {
+  background: linear-gradient(135deg, #e67e22, #f1c40f);
+  transform: scale(1.1);
+}
 
-    /* Футер */
-    .footer {
-      background: rgba(0, 0, 0, 0.8);
-      color: white;
-      padding: 15px;
-      width: 100%;
-      text-align: center;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.5);
-      font-size: 0.9rem;
-      z-index: 10;
-    }
+/* Футер */
+.footer {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 15px;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.5);
+  font-size: 0.9rem;
+  z-index: 10;
+}
 
-    /* Адаптивність для мобільних пристроїв */
-    @media (max-width: 768px) {
-      .content-container h2 {
-        font-size: 2rem;
-      }
+/* Адаптивність для мобільних пристроїв */
+@media (max-width: 768px) {
+  .content-container h2 {
+    font-size: 2rem;
+  }
 
-      .category-button {
-        font-size: 1rem;
-        padding: 12px 24px;
-      }
+  .category-button {
+    font-size: 1rem;
+    padding: 12px 24px;
+  }
 
-      .footer {
-        font-size: 0.8rem;
-        padding: 10px;
-      }
-    }
+  .footer {
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+}
 
-    .cart-button {
-      background-color: #ff9a9e;
-      padding: 5px 10px;
-      border-radius: 5px;
-      color: white;
-      font-size: 18px;
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
+/* Кнопка кошика */
+.cart-button {
+  background-color: #ff9a9e;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
 
-    .cart-button:hover {
-      background-color: #ff7a8e;
-      transform: scale(1.1);
-    }
-    header {
-        background-color: #000; /* Непрозорий чорний колір */
-        padding: 20px;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        
-      }
-      footer {
-        background-color: #000; /* Непрозорий чорний колір */
-        padding: 20px;
-        text-align: center;
-        position: relative;
-        width: 100%;
-        bottom: 0;
-      }
+.cart-button:hover {
+  background-color: #ff7a8e;
+  transform: scale(1.1);
+}
+
+/* Фіксація футера внизу */
+footer {
+  background-color: #000;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  bottom: 0;
+  position: relative;
+}
+
   </style>
 </head>
 <body>

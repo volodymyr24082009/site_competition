@@ -23,30 +23,22 @@ body {
 }
 
 header {
-  background-color: #000; /* Непрозорий чорний колір */
+  background-color: #000;
   padding: 20px;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);    footer {
-  background-color: #000; /* Непрозорий чорний колір */
-  padding: 20px;
-  text-align: center;
-  position: relative;
-  width: 100%;
-  bottom: 0;
-}
- 
-}
-footer {
-  background-color: #000; /* Непрозорий чорний колір */
-  padding: 20px;
-  text-align: center;
-  position: relative;
-  width: 100%;
-  bottom: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+footer {
+  background-color: #000;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+}
 
 nav ul {
     list-style: none;
@@ -76,8 +68,7 @@ nav ul li a:hover {
 }
 
 .hero {
-    background: url("https://optim.tildacdn.com/tild3564-6436-4134-a234-343636356162/-/resize/824x/-/format/webp/interier-restorana.jpg")
-        no-repeat center center;
+    background: url("https://optim.tildacdn.com/tild3564-6436-4134-a234-343636356162/-/resize/824x/-/format/webp/interier-restorana.jpg") no-repeat center center;
     background-size: cover;
     height: 70vh;
     display: flex;
@@ -165,11 +156,11 @@ nav ul li a:hover {
 
 /* Кнопка кошика без фону */
 .cart-button {
-    background-color: transparent; /* Забираємо фон */
+    background-color: transparent;
     color: white;
     padding: 10px 20px;
     font-size: 1.2rem;
-    border: none; /* Видалено рамку */
+    border: none;
     transition: transform 0.3s ease;
     cursor: pointer;
 }
@@ -180,11 +171,11 @@ nav ul li a:hover {
 
 /* Кнопка гаманця без фону */
 .wallet-button {
-    background-color: transparent; /* Забираємо фон */
+    background-color: transparent;
     color: white;
     padding: 10px 20px;
     font-size: 1.2rem;
-    border: none; /* Видалено рамку */
+    border: none;
     transition: transform 0.3s ease;
     cursor: pointer;
 }
@@ -240,9 +231,18 @@ nav ul li a:hover {
     .footer-links a {
         font-size: 12px;
     }
+
+    .auth-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .auth-container button {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
 }
 
-/* Адаптивні стилі для великих екранів (таблети, ноутбуки) */
+/* Адаптивні стилі для великих екранів */
 @media (min-width: 1024px) {
     .hero {
         height: 80vh;
@@ -264,7 +264,21 @@ nav ul li a:hover {
     .footer-links a {
         font-size: 16px;
     }
+
+    .auth-container h2 {
+        font-size: 2.5rem;
+    }
+
+    .auth-container input {
+        font-size: 1.2rem;
+    }
+
+    .auth-container button {
+        font-size: 1.2rem;
+        padding: 14px 28px;
+    }
 }
+
 
     </style>
   </head>
