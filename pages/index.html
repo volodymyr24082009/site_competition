@@ -1,314 +1,1271 @@
 <!DOCTYPE html>
 <html lang="uk">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Шкільна їдальня</title>
-    <link rel="stylesheet" href="./styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-body {
-    font-family: "Orbitron", sans-serif;
-    background: linear-gradient(45deg, #6a11cb, #2575fc, #2ecc71);
-    color: white;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    box-sizing: border-box;
-}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шкільна їдальня - Смачна та здорова їжа для школярів</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    :root {
+      --primary-gradient: linear-gradient(45deg, #6a11cb, #2575fc, #2ecc71);
+      --dark-gradient: linear-gradient(45deg, #111827, #1f2937, #111827);
+      --button-gradient: linear-gradient(135deg, #f1c40f, #e67e22);
+      --button-hover-gradient: linear-gradient(135deg, #e67e22, #f1c40f);
+      --card-bg: rgba(255, 255, 255, 0.1);
+      --text-color: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.8);
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --amber-400: #fbbf24;
+      --amber-500: #f59e0b;
+      --orange-500: #f97316;
+      --orange-600: #ea580c;
+      --rose-300: #fda4af;
+      --transition-fast: 0.3s ease;
+      --transition-medium: 0.5s ease;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --border-radius-sm: 0.25rem;
+      --border-radius-md: 0.375rem;
+      --border-radius-lg: 0.5rem;
+      --border-radius-xl: 0.75rem;
+      --border-radius-2xl: 1rem;
+      --border-radius-full: 9999px;
+    }
 
-header {
-  background-color: #000;
-  padding: 20px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-footer {
-  background-color: #000;
-  padding: 20px;
-  text-align: center;
-  position: relative;
-  width: 100%;
-  bottom: 0;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: var(--primary-gradient);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      transition: background var(--transition-medium);
+    }
 
-nav ul li {
-    margin: 0 15px;
-}
+    body.dark {
+      background: var(--dark-gradient);
+    }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease, transform 0.3s ease;
-    font-size: 18px;
-}
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
 
-nav ul li a:hover {
-    color: #ff9a9e;
-    transform: scale(1.1);
-    text-shadow: 0 0 8px #ff9a9e;
-}
+    /* Header Styles */
+    header {
+      background-color: var(--black);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-lg);
+      transition: all var(--transition-fast);
+    }
 
-.hero {
-    background: url("https://optim.tildacdn.com/tild3564-6436-4134-a234-343636356162/-/resize/824x/-/format/webp/interier-restorana.jpg") no-repeat center center;
-    background-size: cover;
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 20px;
-    position: relative;
-    background-attachment: fixed;
-}
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
 
-.hero h1, .hero p {
-    position: relative;
-    z-index: 10;
-}
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
 
-.hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 5;
-}
+    .nav-desktop {
+      display: flex;
+    }
 
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
-}
+    .nav-desktop ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
 
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-}
+    .nav-desktop a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-.cta-button {
-    background: linear-gradient(135deg, #f1c40f, #e67e22);
-    color: #000;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-}
+    .nav-desktop a:hover {
+      color: var(--rose-300);
+      transform: scale(1.05);
+      text-shadow: 0 0 8px var(--rose-300);
+    }
 
-.cta-button:hover {
-    background: linear-gradient(135deg, #e67e22, #f1c40f);
-}
+    .nav-mobile {
+      display: none;
+    }
 
-.auth-container {
-    margin-top: 20px;
-    text-align: center;
-}
+    .hamburger {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--text-color);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
 
-.auth-container h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 300px;
+      height: 100vh;
+      background: var(--primary-gradient);
+      z-index: 1000;
+      transition: right var(--transition-fast);
+      padding: 2rem 1rem;
+      box-shadow: var(--shadow-xl);
+      display: flex;
+      flex-direction: column;
+    }
 
-.auth-container input {
-    padding: 10px;
-    font-size: 1rem;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+    body.dark .mobile-menu {
+      background: var(--dark-gradient);
+    }
 
-.auth-container button {
-    background: #007bff;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-}
+    .mobile-menu.active {
+      right: 0;
+    }
 
-.auth-container button:hover {
-    background: #0056b3;
-}
+    .close-menu {
+      align-self: flex-end;
+      background: transparent;
+      border: none;
+      color: var(--text-color);
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-bottom: 2rem;
+    }
 
-/* Кнопка кошика без фону */
-.cart-button {
-    background-color: transparent;
-    color: white;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    border: none;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-}
+    .mobile-menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
 
-.cart-button:hover {
-    transform: scale(1.1);
-}
+    .mobile-menu a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: var(--border-radius-md);
+      transition: background var(--transition-fast);
+    }
 
-/* Кнопка гаманця без фону */
-.wallet-button {
-    background-color: transparent;
-    color: white;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    border: none;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-}
+    .mobile-menu a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
 
-.wallet-button:hover {
-    transform: scale(1.1);
-}
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-fast);
+    }
 
-.footer-links a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 14px;
-    text-transform: uppercase;
-}
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
 
-.footer-links a:hover {
-    color: #ff9a9e;
-}
+    /* Hero Section */
+    .hero {
+      background: url("https://optim.tildacdn.com/tild3564-6436-4134-a234-343636356162/-/resize/824x/-/format/webp/interier-restorana.jpg") no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      height: 70vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem;
+    }
 
-/* Адаптивні стилі для мобільних пристроїв */
-@media (max-width: 768px) {
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 800px;
+    }
+
     .hero h1 {
-        font-size: 2.5rem;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+      animation: fadeInDown 1s;
     }
 
     .hero p {
-        font-size: 1rem;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      animation: fadeInUp 1s;
     }
 
-    .cta-button {
-        font-size: 1rem;
-        padding: 12px 24px;
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: center;
+      animation: fadeIn 1.5s;
     }
 
-    header {
-        padding: 10px 0;
+    @media (min-width: 640px) {
+      .hero-buttons {
+        flex-direction: row;
+      }
     }
 
-    nav ul {
-        flex-direction: column;
-        align-items: center;
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--border-radius-md);
+      text-decoration: none;
+      font-weight: bold;
+      transition: all var(--transition-fast);
+      border: none;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
     }
 
-    nav ul li {
-        margin: 5px 0;
+    .btn-primary {
+      background: var(--button-gradient);
+      color: var(--black);
     }
 
-    .footer {
-        padding: 15px;
+    .btn-primary:hover {
+      background: var(--button-hover-gradient);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-color);
+      border: 2px solid var(--text-color);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 4rem 1rem;
+      background: linear-gradient(to bottom right, rgba(106, 17, 203, 0.9), rgba(37, 117, 252, 0.9), rgba(46, 204, 113, 0.9));
+      transition: background var(--transition-medium);
+    }
+
+    body.dark .features {
+      background: linear-gradient(to bottom right, rgba(17, 24, 39, 0.9), rgba(31, 41, 55, 0.9), rgba(17, 24, 39, 0.9));
+    }
+
+    .section-title {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: var(--button-gradient);
+      border-radius: var(--border-radius-full);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: var(--border-radius-lg);
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform var(--transition-fast);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .feature-icon {
+      width: 4rem;
+      height: 4rem;
+      background: var(--button-gradient);
+      border-radius: var(--border-radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+
+    .feature-icon svg {
+      width: 2rem;
+      height: 2rem;
+      fill: none;
+      stroke: var(--white);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .feature-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-description {
+      color: var(--text-secondary);
+    }
+
+    /* Popular Dishes Section */
+    .dishes {
+      padding: 4rem 1rem;
+      background: var(--white);
+      transition: background var(--transition-medium);
+    }
+
+    body.dark .dishes {
+      background: var(--gray-900);
+    }
+
+    body.dark .section-title.dark-text {
+      color: var(--white);
+    }
+
+    .section-title.dark-text {
+      color: var(--gray-900);
+    }
+
+    .dishes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .dishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .dishes-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .dish-card {
+      background: var(--white);
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-fast);
+    }
+
+    body.dark .dish-card {
+      background: var(--gray-800);
+      border: 1px solid var(--gray-700);
+    }
+
+    .dish-card:hover {
+      box-shadow: var(--shadow-xl);
+    }
+
+    .dish-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+    }
+
+    .dish-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-fast);
+    }
+
+    .dish-card:hover .dish-image img {
+      transform: scale(1.05);
+    }
+
+    .dish-content {
+      padding: 1rem;
+    }
+
+    .dish-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.25rem;
+      color: var(--gray-900);
+    }
+
+    body.dark .dish-title {
+      color: var(--white);
+    }
+
+    .dish-price {
+      color: var(--gray-600);
+      margin-bottom: 0.75rem;
+    }
+
+    body.dark .dish-price {
+      color: var(--gray-300);
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .mt-10 {
+      margin-top: 2.5rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--black);
+      color: var(--text-color);
+      padding: 2rem 1rem;
+      margin-top: auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .footer-title {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-text {
+      color: var(--gray-300);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
     }
 
     .footer-links a {
-        font-size: 12px;
+      color: var(--gray-300);
+      text-decoration: none;
+      transition: color var(--transition-fast);
     }
 
-    .auth-container h2 {
-        font-size: 1.5rem;
+    .footer-links a:hover {
+      color: var(--white);
     }
 
-    .auth-container button {
-        font-size: 0.9rem;
-        padding: 10px 20px;
-    }
-}
-
-/* Адаптивні стилі для великих екранів */
-@media (min-width: 1024px) {
-    .hero {
-        height: 80vh;
+    .footer-address {
+      font-style: normal;
+      color: var(--gray-300);
     }
 
-    .hero h1 {
-        font-size: 4rem;
+    .footer-address p {
+      margin-bottom: 0.5rem;
     }
 
-    .cta-button {
-        font-size: 1.5rem;
-        padding: 18px 36px;
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--gray-800);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .footer {
-        padding: 30px;
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+      }
     }
 
-    .footer-links a {
-        font-size: 16px;
+    .footer-bottom-links {
+      margin-top: 1rem;
     }
 
-    .auth-container h2 {
-        font-size: 2.5rem;
+    @media (min-width: 768px) {
+      .footer-bottom-links {
+        margin-top: 0;
+      }
     }
 
-    .auth-container input {
-        font-size: 1.2rem;
+    .footer-bottom-links a {
+      color: var(--gray-300);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      margin: 0 0.5rem;
+      transition: color var(--transition-fast);
     }
 
-    .auth-container button {
-        font-size: 1.2rem;
-        padding: 14px 28px;
+    .footer-bottom-links a:hover {
+      color: var(--white);
     }
-}
 
+    /* Theme Toggle */
+    .theme-toggle {
+      background: transparent;
+      border: none;
+      color: var(--text-color);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: var(--border-radius-full);
+      transition: background var(--transition-fast);
+    }
 
-    </style>
-  </head>
+    .theme-toggle:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
 
-  <body>
-    <header>
-      <nav>
+    .theme-toggle svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 1s;
+    }
+
+    .animate-fadeInDown {
+      animation: fadeInDown 1s;
+    }
+
+    .animate-fadeInUp {
+      animation: fadeInUp 1s;
+    }
+
+    /* Scroll to top button */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--button-gradient);
+      color: var(--black);
+      width: 3rem;
+      height: 3rem;
+      border-radius: var(--border-radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-fast);
+      z-index: 90;
+      border: none;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .nav-desktop {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 1.75rem;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .nav-mobile {
+        display: none;
+      }
+    }
+
+    /* Preloader */
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s, visibility 0.5s;
+    }
+
+    .preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: var(--white);
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Additional animations */
+    .reveal {
+      position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Pulse animation for CTA */
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(241, 196, 15, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(241, 196, 15, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(241, 196, 15, 0);
+      }
+    }
+
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+  </style>
+</head>
+<body>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">Шкільна їдальня</div>
+      
+      <!-- Desktop Navigation -->
+      <nav class="nav-desktop">
         <ul>
           <li><a href="../pages/index.html">Початкова сторінка</a></li>
           <li><a href="../pages/menu.html">Меню</a></li>
           <li><a href="../tests/tests.html">Тести</a></li>
-          <li><a href="../tests/wallet.html" class="cart-button">Гаманець</a></li>
-          <li><a href="../pages/cart.html" class="cart-button">🛒</a></li>
+          <li>
+            <a href="../tests/wallet.html">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path>
+                <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path>
+                <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path>
+              </svg>
+              Гаманець
+            </a>
+          </li>
+          <li>
+            <a href="../pages/cart.html">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="8" cy="21" r="1"></circle>
+                <circle cx="19" cy="21" r="1"></circle>
+                <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+              </svg>
+              Кошик
+            </a>
+          </li>
+          <li>
+            <button class="theme-toggle" id="theme-toggle">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon" style="display: none;">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </button>
+          </li>
         </ul>
       </nav>
-    </header>
-  
+      
+      <!-- Mobile Menu Button -->
+      <button class="hamburger" id="hamburger">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
 
-    <section class="hero">
+  <!-- Mobile Menu -->
+  <div class="overlay" id="overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="close-menu" id="close-menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <ul>
+      <li>
+        <a href="../pages/index.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          Початкова сторінка
+        </a>
+      </li>
+      <li>
+        <a href="../pages/menu.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          Меню
+        </a>
+      </li>
+      <li>
+        <a href="../tests/tests.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          Тести
+        </a>
+      </li>
+      <li>
+        <a href="../tests/wallet.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path>
+            <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path>
+            <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path>
+          </svg>
+          Гаманець
+        </a>
+      </li>
+      <li>
+        <a href="../pages/cart.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="21" r="1"></circle>
+            <circle cx="19" cy="21" r="1"></circle>
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+          </svg>
+          Кошик
+        </a>
+      </li>
+      <li>
+        <button class="theme-toggle mobile-theme-toggle" id="mobile-theme-toggle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-sun-icon">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-moon-icon" style="display: none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          Змінити тему
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
       <h1>Ласкаво просимо до шкільної їдальні!</h1>
       <p>Виберіть страви, заробляйте зірочки і насолоджуйтесь!</p>
-    </section>
-
-    <footer>
-      <p>&copy; 2024 Шкільна їдальня</p>
-      <div class="footer-links">
-        <a href="./contacts.html">Контакти</a>
-        <a href="./privacy-policy.html">Політика конфіденційності</a>
-        <a href="./about.html">Про нас</a>
+      <div class="hero-buttons">
+        <a href="../pages/menu.html" class="btn btn-primary pulse">Переглянути меню</a>
+        <a href="#" class="btn btn-outline">Увійти в аккаунт</a>
       </div>
-    </footer>
-  </body>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title reveal">Наші переваги</h2>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">Швидке обслуговування</h3>
+          <p class="feature-description">Замовляйте заздалегідь і отримуйте їжу без черг</p>
+        </div>
+        
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">Якісні продукти</h3>
+          <p class="feature-description">Ми використовуємо тільки свіжі та якісні інгредієнти</p>
+        </div>
+        
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">Бонусна система</h3>
+          <p class="feature-description">Заробляйте зірочки за кожне замовлення та отримуйте знижки</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Dishes Section -->
+  <section class="dishes">
+    <div class="container">
+      <h2 class="section-title dark-text reveal">Популярні страви</h2>
+      <div class="dishes-grid">
+        <div class="dish-card reveal">
+          <div class="dish-image">
+            <img src="https://via.placeholder.com/300x200" alt="Борщ український">
+          </div>
+          <div class="dish-content">
+            <h3 class="dish-title">Борщ український</h3>
+            <p class="dish-price">45 грн</p>
+            <a href="#" class="btn btn-primary">Додати в кошик</a>
+          </div>
+        </div>
+        
+        <div class="dish-card reveal">
+          <div class="dish-image">
+            <img src="https://via.placeholder.com/300x200" alt="Котлета з пюре">
+          </div>
+          <div class="dish-content">
+            <h3 class="dish-title">Котлета з пюре</h3>
+            <p class="dish-price">65 грн</p>
+            <a href="#" class="btn btn-primary">Додати в кошик</a>
+          </div>
+        </div>
+        
+        <div class="dish-card reveal">
+          <div class="dish-image">
+            <img src="https://via.placeholder.com/300x200" alt="Салат овочевий">
+          </div>
+          <div class="dish-content">
+            <h3 class="dish-title">Салат овочевий</h3>
+            <p class="dish-price">35 грн</p>
+            <a href="#" class="btn btn-primary">Додати в кошик</a>
+          </div>
+        </div>
+        
+        <div class="dish-card reveal">
+          <div class="dish-image">
+            <img src="https://via.placeholder.com/300x200" alt="Компот фруктовий">
+          </div>
+          <div class="dish-content">
+            <h3 class="dish-title">Компот фруктовий</h3>
+            <p class="dish-price">20 грн</p>
+            <a href="#" class="btn btn-primary">Додати в кошик</a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-10">
+        <a href="../pages/menu.html" class="btn btn-outline">Переглянути все меню</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-title">Шкільна їдальня</h3>
+          <p class="footer-text">Смачна та здорова їжа для школярів</p>
+        </div>
+        <div>
+          <h3 class="footer-title">Швидкі посилання</h3>
+          <ul class="footer-links">
+            <li><a href="../pages/index.html">Головна</a></li>
+            <li><a href="../pages/menu.html">Меню</a></li>
+            <li><a href="../tests/tests.html">Тести</a></li>
+            <li><a href="./about.html">Про нас</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-title">Контакти</h3>
+          <address class="footer-address">
+            <p>вул. Шкільна, 123</p>
+            <p>м. Київ, Україна</p>
+            <p>Телефон: (044) 123-45-67</p>
+            <p>Email: info@school-cafe.ua</p>
+          </address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Шкільна їдальня. Всі права захищені.</p>
+        <div class="footer-bottom-links">
+          <a href="./contacts.html">Контакти</a>
+          <a href="./privacy-policy.html">Політика конфіденційності</a>
+          <a href="./about.html">Про нас</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to top button -->
+  <button class="scroll-top" id="scroll-top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6"></path>
+    </svg>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    // Wait for DOM to load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Preloader
+      const preloader = document.querySelector('.preloader');
+      window.addEventListener('load', function() {
+        preloader.classList.add('hidden');
+      });
+      
+      // Mobile menu
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const closeMenu = document.getElementById('close-menu');
+      const overlay = document.getElementById('overlay');
+      
+      hamburger.addEventListener('click', function() {
+        mobileMenu.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+      
+      function closeMenuFunc() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      
+      closeMenu.addEventListener('click', closeMenuFunc);
+      overlay.addEventListener('click', closeMenuFunc);
+      
+      // Theme toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+      const sunIcon = document.querySelector('.sun-icon');
+      const moonIcon = document.querySelector('.moon-icon');
+      const mobileSunIcon = document.querySelector('.mobile-sun-icon');
+      const mobileMoonIcon = document.querySelector('.mobile-moon-icon');
+      
+      // Check for saved theme preference
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark');
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+        mobileSunIcon.style.display = 'none';
+        mobileMoonIcon.style.display = 'block';
+      }
+      
+      function toggleTheme() {
+        document.body.classList.toggle('dark');
+        
+        if (document.body.classList.contains('dark')) {
+          localStorage.setItem('theme', 'dark');
+          sunIcon.style.display = 'none';
+          moonIcon.style.display = 'block';
+          mobileSunIcon.style.display = 'none';
+          mobileMoonIcon.style.display = 'block';
+        } else {
+          localStorage.setItem('theme', 'light');
+          sunIcon.style.display = 'block';
+          moonIcon.style.display = 'none';
+          mobileSunIcon.style.display = 'block';
+          mobileMoonIcon.style.display = 'none';
+        }
+      }
+      
+      themeToggle.addEventListener('click', toggleTheme);
+      mobileThemeToggle.addEventListener('click', toggleTheme);
+      
+      // Scroll to top
+      const scrollTopBtn = document.getElementById('scroll-top');
+      
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          scrollTopBtn.classList.add('visible');
+        } else {
+          scrollTopBtn.classList.remove('visible');
+        }
+      });
+      
+      scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
+      // Reveal animations on scroll
+      const revealElements = document.querySelectorAll('.reveal');
+      
+      function reveal() {
+        for (let i = 0; i < revealElements.length; i++) {
+          const windowHeight = window.innerHeight;
+          const elementTop = revealElements[i].getBoundingClientRect().top;
+          const elementVisible = 150;
+          
+          if (elementTop < windowHeight - elementVisible) {
+            revealElements[i].classList.add('active');
+          }
+        }
+      }
+      
+      window.addEventListener('scroll', reveal);
+      reveal(); // Call once on load
+      
+      // Add to cart animation
+      const addToCartButtons = document.querySelectorAll('.dish-card .btn-primary');
+      
+      addToCartButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Create animation element
+          const animEl = document.createElement('div');
+          animEl.style.position = 'fixed';
+          animEl.style.width = '20px';
+          animEl.style.height = '20px';
+          animEl.style.borderRadius = '50%';
+          animEl.style.background = 'var(--button-gradient)';
+          animEl.style.zIndex = '1000';
+          animEl.style.pointerEvents = 'none';
+          
+          // Get button position
+          const rect = this.getBoundingClientRect();
+          animEl.style.left = `${rect.left + rect.width / 2}px`;
+          animEl.style.top = `${rect.top + rect.height / 2}px`;
+          
+          // Append to body
+          document.body.appendChild(animEl);
+          
+          // Get cart icon position
+          const cartIcon = document.querySelector('.nav-desktop a[href="../pages/cart.html"]');
+          const cartRect = cartIcon ? cartIcon.getBoundingClientRect() : { right: 20, top: 20 };
+          
+          // Animate
+          animEl.animate([
+            { transform: 'scale(1)', opacity: 1 },
+            { transform: 'scale(0.5)', opacity: 0.7, left: `${cartRect.left + cartRect.width / 2}px`, top: `${cartRect.top + cartRect.height / 2}px` }
+          ], {
+            duration: 800,
+            easing: 'ease-out'
+          }).onfinish = function() {
+            animEl.remove();
+            
+            // Show feedback
+            const toast = document.createElement('div');
+            toast.textContent = 'Додано в кошик!';
+            toast.style.position = 'fixed';
+            toast.style.bottom = '20px';
+            toast.style.right = '20px';
+            toast.style.background = 'var(--button-gradient)';
+            toast.style.color = 'var(--black)';
+            toast.style.padding = '10px 20px';
+            toast.style.borderRadius = 'var(--border-radius-md)';
+            toast.style.zIndex = '1000';
+            toast.style.boxShadow = 'var(--shadow-md)';
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateY(20px)';
+            toast.style.transition = 'all 0.3s ease';
+            
+            document.body.appendChild(toast);
+            
+            // Show toast
+            setTimeout(() => {
+              toast.style.opacity = '1';
+              toast.style.transform = 'translateY(0)';
+            }, 100);
+            
+            // Hide toast
+            setTimeout(() => {
+              toast.style.opacity = '0';
+              toast.style.transform = 'translateY(20px)';
+              setTimeout(() => {
+                toast.remove();
+              }, 300);
+            }, 3000);
+          };
+        });
+      });
+    });
+  </script>
+</body>
 </html>

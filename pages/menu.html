@@ -3,193 +3,1139 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Меню шкільної їдальні</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>Меню шкільної їдальні | Смачна та здорова їжа</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <style>
-/* Загальні стилі для тіла */
-body {
-  font-family: "Orbitron", sans-serif;
-  background: linear-gradient(45deg, #6a11cb, #2575fc, #2ecc71);
-  color: white;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  min-height: 100vh;
-  text-align: center;
-  flex-direction: column;
-}
+    :root {
+      --primary-gradient: linear-gradient(45deg, #6a11cb, #2575fc, #2ecc71);
+      --dark-gradient: linear-gradient(45deg, #111827, #1f2937, #111827);
+      --button-gradient: linear-gradient(135deg, #f1c40f, #e67e22);
+      --button-hover-gradient: linear-gradient(135deg, #e67e22, #f1c40f);
+      --card-bg: rgba(255, 255, 255, 0.1);
+      --text-color: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.8);
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --amber-400: #fbbf24;
+      --amber-500: #f59e0b;
+      --orange-500: #f97316;
+      --orange-600: #ea580c;
+      --rose-300: #fda4af;
+      --transition-fast: 0.3s ease;
+      --transition-medium: 0.5s ease;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --border-radius-sm: 0.25rem;
+      --border-radius-md: 0.375rem;
+      --border-radius-lg: 0.5rem;
+      --border-radius-xl: 0.75rem;
+      --border-radius-2xl: 1rem;
+      --border-radius-full: 9999px;
+    }
 
-/* Стиль для хедера (навігація) */
-header {
-  background-color: rgba(0, 31, 63, 0.9);
-  padding: 10px 0;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* Стилі для навігації */
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: space-between; /* Зміст на всю ширину */
-  width: 100%; /* Ширина 100% */
-  text-align: center;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-nav ul li {
-  margin: 0 15px;
-}
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: var(--primary-gradient);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      transition: background var(--transition-medium);
+    }
 
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
-  font-size: 18px;
-}
+    body.dark {
+      background: var(--dark-gradient);
+    }
 
-nav ul li a:hover {
-  color: #ff9a9e;
-  transform: scale(1.1);
-  text-shadow: 0 0 8px #ff9a9e;
-}
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
 
-/* Стилі для контейнера контенту */
-.content-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  flex-grow: 1;
-  margin-top: 10px;
-}
+    /* Header Styles */
+    header {
+      background-color: var(--black);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-lg);
+      transition: all var(--transition-fast);
+    }
 
-.content-container h2 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-  color: #fff;
-}
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
 
-/* Стилі для кнопок категорій */
-.category-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
 
-.category-button {
-  background: linear-gradient(135deg, #f1c40f, #e67e22);
-  color: black;
-  padding: 15px 30px;
-  font-size: 1.2rem;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background 0.3s ease, transform 0.3s ease;
-  cursor: pointer;
-}
+    .nav-desktop {
+      display: flex;
+    }
 
-.category-button:hover {
-  background: linear-gradient(135deg, #e67e22, #f1c40f);
-  transform: scale(1.1);
-}
+    .nav-desktop ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
 
-/* Футер */
-.footer {
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 15px;
-  width: 100%;
-  text-align: center;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.5);
-  font-size: 0.9rem;
-  z-index: 10;
-}
+    .nav-desktop a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-/* Адаптивність для мобільних пристроїв */
-@media (max-width: 768px) {
-  .content-container h2 {
-    font-size: 2rem;
-  }
+    .nav-desktop a:hover {
+      color: var(--rose-300);
+      transform: scale(1.05);
+      text-shadow: 0 0 8px var(--rose-300);
+    }
 
-  .category-button {
-    font-size: 1rem;
-    padding: 12px 24px;
-  }
+    .nav-mobile {
+      display: none;
+    }
 
-  .footer {
-    font-size: 0.8rem;
-    padding: 10px;
-  }
-}
+    .hamburger {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--text-color);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
 
-/* Кнопка кошика */
-.cart-button {
-  background-color: #ff9a9e;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 300px;
+      height: 100vh;
+      background: var(--primary-gradient);
+      z-index: 1000;
+      transition: right var(--transition-fast);
+      padding: 2rem 1rem;
+      box-shadow: var(--shadow-xl);
+      display: flex;
+      flex-direction: column;
+    }
 
-.cart-button:hover {
-  background-color: #ff7a8e;
-  transform: scale(1.1);
-}
+    body.dark .mobile-menu {
+      background: var(--dark-gradient);
+    }
 
-/* Фіксація футера внизу */
-footer {
-  background-color: #000;
-  padding: 20px;
-  text-align: center;
-  width: 100%;
-  bottom: 0;
-  position: relative;
-}
+    .mobile-menu.active {
+      right: 0;
+    }
 
+    .close-menu {
+      align-self: flex-end;
+      background: transparent;
+      border: none;
+      color: var(--text-color);
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-bottom: 2rem;
+    }
+
+    .mobile-menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mobile-menu a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: var(--border-radius-md);
+      transition: background var(--transition-fast);
+    }
+
+    .mobile-menu a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-fast);
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Menu Content */
+    .menu-content {
+      padding: 4rem 1rem;
+      flex-grow: 1;
+    }
+
+    .menu-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeInDown 1s;
+    }
+
+    .menu-header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .menu-header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: var(--text-secondary);
+    }
+
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 4rem;
+      animation: fadeInUp 1s;
+    }
+
+    .category-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      width: 280px;
+      box-shadow: var(--shadow-lg);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .category-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .category-image {
+      height: 180px;
+      overflow: hidden;
+    }
+
+    .category-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-medium);
+    }
+
+    .category-card:hover .category-image img {
+      transform: scale(1.1);
+    }
+
+    .category-content {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .category-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .category-content p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--border-radius-md);
+      text-decoration: none;
+      font-weight: bold;
+      transition: all var(--transition-fast);
+      border: none;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .btn-primary {
+      background: var(--button-gradient);
+      color: var(--black);
+    }
+
+    .btn-primary:hover {
+      background: var(--button-hover-gradient);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-color);
+      border: 2px solid var(--text-color);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Special Offers */
+    .special-offers {
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: var(--button-gradient);
+      border-radius: var(--border-radius-full);
+    }
+
+    .offers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .offer-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      transition: transform var(--transition-fast);
+      position: relative;
+    }
+
+    .offer-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .offer-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--button-gradient);
+      color: var(--black);
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius-full);
+      font-weight: bold;
+      font-size: 0.8rem;
+      z-index: 10;
+    }
+
+    .offer-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .offer-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-medium);
+    }
+
+    .offer-card:hover .offer-image img {
+      transform: scale(1.1);
+    }
+
+    .offer-content {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .offer-content h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .offer-content .price {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .offer-content .original-price {
+      text-decoration: line-through;
+      color: var(--gray-400);
+      font-size: 0.9rem;
+    }
+
+    .offer-content .discount-price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--amber-400);
+    }
+
+    .offer-content p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--black);
+      color: var(--text-color);
+      padding: 2rem 1rem;
+      margin-top: auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .footer-title {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-text {
+      color: var(--gray-300);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links a {
+      color: var(--gray-300);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    .footer-address {
+      font-style: normal;
+      color: var(--gray-300);
+    }
+
+    .footer-address p {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--gray-800);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+      }
+    }
+
+    .footer-bottom-links {
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom-links {
+        margin-top: 0;
+      }
+    }
+
+    .footer-bottom-links a {
+      color: var(--gray-300);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      margin: 0 0.5rem;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--white);
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      background: transparent;
+      border: none;
+      color: var(--text-color);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: var(--border-radius-full);
+      transition: background var(--transition-fast);
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .theme-toggle svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 1s;
+    }
+
+    .animate-fadeInDown {
+      animation: fadeInDown 1s;
+    }
+
+    .animate-fadeInUp {
+      animation: fadeInUp 1s;
+    }
+
+    /* Scroll to top button */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--button-gradient);
+      color: var(--black);
+      width: 3rem;
+      height: 3rem;
+      border-radius: var(--border-radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-fast);
+      z-index: 90;
+      border: none;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .nav-desktop {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .menu-header h1 {
+        font-size: 2rem;
+      }
+
+      .menu-header p {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 1.75rem;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .nav-mobile {
+        display: none;
+      }
+    }
+
+    /* Preloader */
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s, visibility 0.5s;
+    }
+
+    .preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: var(--white);
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Additional animations */
+    .reveal {
+      position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Pulse animation for CTA */
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(241, 196, 15, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(241, 196, 15, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(241, 196, 15, 0);
+      }
+    }
+
+    .pulse {
+      animation: pulse 2s infinite;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="../pages/index.html">Початкова сторінка</a></li>
-        <li><a href="../pages/menu.html">Меню</a></li>
-        <li><a href="../tests/tests.html">Тести</a></li>
-        <li><a href="../tests/wallet.html" class="cart-button">Гаманець</a></li>
-        <li><a href="../pages/cart.html" class="cart-button">🛒</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <div class="content-container">
-    <h2>Меню шкільної їдальні</h2>
-    <p>Оберіть категорію товарів:</p>
-    <div class="category-buttons">
-      <a href="./food.html" class="category-button">Їжа</a>
-    </div>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="spinner"></div>
   </div>
 
-  <!-- Футер -->
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">Шкільна їдальня</div>
+      
+      <!-- Desktop Navigation -->
+      <nav class="nav-desktop">
+        <ul>
+          <li><a href="../pages/index.html">Початкова сторінка</a></li>
+          <li><a href="../pages/menu.html">Меню</a></li>
+          <li><a href="../tests/tests.html">Тести</a></li>
+          <li>
+            <a href="../tests/wallet.html">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path>
+                <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path>
+                <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path>
+              </svg>
+              Гаманець
+            </a>
+          </li>
+          <li>
+            <a href="../pages/cart.html">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="8" cy="21" r="1"></circle>
+                <circle cx="19" cy="21" r="1"></circle>
+                <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+              </svg>
+              Кошик
+            </a>
+          </li>
+          <li>
+            <button class="theme-toggle" id="theme-toggle">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon" style="display: none;">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+      
+      <!-- Mobile Menu Button -->
+      <button class="hamburger" id="hamburger">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="overlay" id="overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="close-menu" id="close-menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <ul>
+      <li>
+        <a href="../pages/index.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          Початкова сторінка
+        </a>
+      </li>
+      <li>
+        <a href="../pages/menu.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          Меню
+        </a>
+      </li>
+      <li>
+        <a href="../tests/tests.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          Тести
+        </a>
+      </li>
+      <li>
+        <a href="../tests/wallet.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path>
+            <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path>
+            <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path>
+          </svg>
+          Гаманець
+        </a>
+      </li>
+      <li>
+        <a href="../pages/cart.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="21" r="1"></circle>
+            <circle cx="19" cy="21" r="1"></circle>
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+          </svg>
+          Кошик
+        </a>
+      </li>
+      <li>
+        <button class="theme-toggle mobile-theme-toggle" id="mobile-theme-toggle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-sun-icon  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-sun-icon">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-moon-icon" style="display: none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          Змінити тему
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Menu Content -->
+  <section class="menu-content">
+    <div class="container">
+      <div class="menu-header">
+        <h1>Меню шкільної їдальні</h1>
+        <p>Смачні та корисні страви для школярів. Оберіть категорію, щоб переглянути наше різноманітне меню.</p>
+      </div>
+
+      <div class="categories">
+        <div class="category-card reveal">
+          <div class="category-image">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Основні страви">
+          </div>
+          <div class="category-content">
+            <h3>Основні страви</h3>
+            <p>Смачні та поживні основні страви для повноцінного харчування</p>
+            <a href="./food.html" class="btn btn-primary">Переглянути</a>
+          </div>
+        </div>
+
+        <div class="category-card reveal">
+          <div class="category-image">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Салати">
+          </div>
+          <div class="category-content">
+            <h3>Салати</h3>
+            <p>Свіжі та корисні салати з овочів та фруктів</p>
+            <a href="./food.html" class="btn btn-primary">Переглянути</a>
+          </div>
+        </div>
+
+        <div class="category-card reveal">
+          <div class="category-image">
+            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80" alt="Десерти">
+          </div>
+          <div class="category-content">
+            <h3>Десерти</h3>
+            <p>Солодкі десерти та випічка для гарного настрою</p>
+            <a href="./food.html" class="btn btn-primary">Переглянути</a>
+          </div>
+        </div>
+
+        <div class="category-card reveal">
+          <div class="category-image">
+            <img src="https://images.unsplash.com/photo-1544252890-c3e4f7e44a71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Напої">
+          </div>
+          <div class="category-content">
+            <h3>Напої</h3>
+            <p>Освіжаючі та корисні напої для втамування спраги</p>
+            <a href="./food.html" class="btn btn-primary">Переглянути</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="special-offers">
+        <h2 class="section-title reveal">Спеціальні пропозиції</h2>
+        <div class="offers-grid">
+          <div class="offer-card reveal">
+            <div class="offer-badge">-20%</div>
+            <div class="offer-image">
+              <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1314&q=80" alt="Комбо-обід">
+            </div>
+            <div class="offer-content">
+              <h3>Комбо-обід</h3>
+              <div class="price">
+                <span class="original-price">75 грн</span>
+                <span class="discount-price">60 грн</span>
+              </div>
+              <p>Основна страва + салат + напій за спеціальною ціною</p>
+              <a href="./food.html" class="btn btn-primary">Замовити</a>
+            </div>
+          </div>
+
+          <div class="offer-card reveal">
+            <div class="offer-badge">Новинка</div>
+            <div class="offer-image">
+              <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Здоровий сніданок">
+            </div>
+            <div class="offer-content">
+              <h3>Здоровий сніданок</h3>
+              <div class="price">
+                <span class="discount-price">45 грн</span>
+              </div>
+              <p>Вівсянка з фруктами та горіхами + йогурт</p>
+              <a href="./food.html" class="btn btn-primary">Замовити</a>
+            </div>
+          </div>
+
+          <div class="offer-card reveal">
+            <div class="offer-badge">Хіт</div>
+            <div class="offer-image">
+              <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Піца дня">
+            </div>
+            <div class="offer-content">
+              <h3>Піца дня</h3>
+              <div class="price">
+                <span class="original-price">65 грн</span>
+                <span class="discount-price">50 грн</span>
+              </div>
+              <p>Щодня нова піца за спеціальною ціною</p>
+              <a href="./food.html" class="btn btn-primary">Замовити</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2024 Шкільна їдальня</p>
-    <div class="footer-links">
-      <a href="./contacts.html">Контакти</a>
-      <a href="./privacy-policy.html">Політика конфіденційності</a>
-      <a href="./about.html">Про нас</a>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-title">Шкільна їдальня</h3>
+          <p class="footer-text">Смачна та здорова їжа для школярів</p>
+        </div>
+        <div>
+          <h3 class="footer-title">Швидкі посилання</h3>
+          <ul class="footer-links">
+            <li><a href="../pages/index.html">Головна</a></li>
+            <li><a href="../pages/menu.html">Меню</a></li>
+            <li><a href="../tests/tests.html">Тести</a></li>
+            <li><a href="./about.html">Про нас</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-title">Контакти</h3>
+          <address class="footer-address">
+            <p>вул. Шкільна, 123</p>
+            <p>м. Київ, Україна</p>
+            <p>Телефон: (044) 123-45-67</p>
+            <p>Email: info@school-cafe.ua</p>
+          </address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Шкільна їдальня. Всі права захищені.</p>
+        <div class="footer-bottom-links">
+          <a href="./contacts.html">Контакти</a>
+          <a href="./privacy-policy.html">Політика конфіденційності</a>
+          <a href="./about.html">Про нас</a>
+        </div>
+      </div>
     </div>
   </footer>
+
+  <!-- Scroll to top button -->
+  <button class="scroll-top" id="scroll-top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6"></path>
+    </svg>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    // Wait for DOM to load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Preloader
+      const preloader = document.querySelector('.preloader');
+      window.addEventListener('load', function() {
+        preloader.classList.add('hidden');
+      });
+      
+      // Mobile menu
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const closeMenu = document.getElementById('close-menu');
+      const overlay = document.getElementById('overlay');
+      
+      hamburger.addEventListener('click', function() {
+        mobileMenu.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+      
+      function closeMenuFunc() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      
+      closeMenu.addEventListener('click', closeMenuFunc);
+      overlay.addEventListener('click', closeMenuFunc);
+      
+      // Theme toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+      const sunIcon = document.querySelector('.sun-icon');
+      const moonIcon = document.querySelector('.moon-icon');
+      const mobileSunIcon = document.querySelector('.mobile-sun-icon');
+      const mobileMoonIcon = document.querySelector('.mobile-moon-icon');
+      
+      // Check for saved theme preference
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark');
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+        mobileSunIcon.style.display = 'none';
+        mobileMoonIcon.style.display = 'block';
+      }
+      
+      function toggleTheme() {
+        document.body.classList.toggle('dark');
+        
+        if (document.body.classList.contains('dark')) {
+          localStorage.setItem('theme', 'dark');
+          sunIcon.style.display = 'none';
+          moonIcon.style.display = 'block';
+          mobileSunIcon.style.display = 'none';
+          mobileMoonIcon.style.display = 'block';
+        } else {
+          localStorage.setItem('theme', 'light');
+          sunIcon.style.display = 'block';
+          moonIcon.style.display = 'none';
+          mobileSunIcon.style.display = 'block';
+          mobileMoonIcon.style.display = 'none';
+        }
+      }
+      
+      themeToggle.addEventListener('click', toggleTheme);
+      mobileThemeToggle.addEventListener('click', toggleTheme);
+      
+      // Scroll to top
+      const scrollTopBtn = document.getElementById('scroll-top');
+      
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          scrollTopBtn.classList.add('visible');
+        } else {
+          scrollTopBtn.classList.remove('visible');
+        }
+      });
+      
+      scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
+      // Reveal animations on scroll
+      const revealElements = document.querySelectorAll('.reveal');
+      
+      function reveal() {
+        for (let i = 0; i < revealElements.length; i++) {
+          const windowHeight = window.innerHeight;
+          const elementTop = revealElements[i].getBoundingClientRect().top;
+          const elementVisible = 150;
+          
+          if (elementTop < windowHeight - elementVisible) {
+            revealElements[i].classList.add('active');
+          }
+        }
+      }
+      
+      window.addEventListener('scroll', reveal);
+      reveal(); // Call once on load
+    });
+  </script>
 </body>
 </html>
